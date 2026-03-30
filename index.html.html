@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Handbook | Albany Insurance Brokers</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #f5f0e8;
+  --cream-deep: #ede6d6;
+  --cream-mid: #e8dfc9;
+  --sand: #d4c9b0;
+  --warm-white: #faf8f4;
+  --green: #2d5a3d;
+  --green-light: #3d7a52;
+  --green-pale: #c8ddd0;
+  --green-faint: #edf4ef;
+  --ink: #1c1a16;
+  --ink-mid: #4a4640;
+  --ink-light: #8a8278;
+  --rust: #9b4a2a;
+  --rust-pale: #f2e4dc;
+  --gold: #b8862a;
+  --gold-pale: #f5edda;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* VIEWS */
+.view { display: none; }
+.view.active { display: block; }
+
+/* ── HEADER ── */
+.header {
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--sand);
+  padding: 1.1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.logo-mark {
+  width: 32px; height: 32px;
+  background: var(--green);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-mark svg { fill: none; stroke: white; stroke-width: 2; }
+.logo-text { font-size: 13px; font-weight: 500; color: var(--ink); }
+.logo-sub { font-size: 11px; color: var(--ink-light); font-weight: 300; }
+.header-search {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--cream); border: 1px solid var(--sand);
+  border-radius: 8px; padding: 7px 14px; width: 260px;
+}
+.header-search input {
+  border: none; background: transparent;
+  font-family: 'Jost', sans-serif; font-size: 13px;
+  color: var(--ink); width: 100%; outline: none;
+}
+.header-search input::placeholder { color: var(--ink-light); }
+.header-search svg { color: var(--ink-light); flex-shrink: 0; }
+.header-tag { font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-light); }
+
+/* ── HUB HERO ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 380px;
+}
+.hero-left {
+  background: var(--green);
+  padding: 3.5rem 3rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+.hero-left::after {
+  content: ''; position: absolute;
+  bottom: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%; border: 40px solid rgba(255,255,255,0.05);
+}
+.hero-left::before {
+  content: ''; position: absolute;
+  top: -40px; left: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%; border: 30px solid rgba(255,255,255,0.04);
+}
+.hero-label { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--green-pale); margin-bottom: 1rem; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem,5vw,4.2rem); font-weight: 600; color: white; line-height: 1.05; margin-bottom: 1.5rem; }
+.hero-title em { font-style: italic; color: var(--green-pale); }
+.hero-body { font-size: 0.875rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 320px; }
+.hero-stats { display: flex; gap: 2rem; margin-top: 2.5rem; }
+.hero-stat span:first-child { display: block; font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: white; line-height: 1; }
+.hero-stat span:last-child { display: block; font-size: 11px; color: var(--green-pale); letter-spacing: 0.5px; margin-top: 3px; font-weight: 300; }
+.hero-right { background: var(--cream-deep); padding: 3rem 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+.hero-right h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--ink-mid); margin-bottom: 1.25rem; }
+.quick-links { display: flex; flex-direction: column; gap: 0.5rem; }
+.quick-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: var(--warm-white); border: 1px solid var(--sand);
+  border-radius: 8px; cursor: pointer;
+  transition: all 0.15s; color: var(--ink); text-decoration: none;
+}
+.quick-link:hover { background: var(--green-faint); border-color: var(--green-pale); transform: translateX(3px); }
+.quick-link-left { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; }
+.quick-link-icon { width: 30px; height: 30px; border-radius: 7px; background: var(--cream-deep); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.quick-link-arrow { font-size: 12px; color: var(--ink-light); }
+
+/* NOTICE */
+.notice {
+  background: var(--gold-pale); border-left: 3px solid var(--gold);
+  padding: 0.9rem 1.25rem; display: flex; gap: 10px; align-items: flex-start;
+  font-size: 0.8rem; color: #5c4010; line-height: 1.6;
+}
+.notice-icon { flex-shrink: 0; margin-top: 1px; }
+
+/* HUB CONTENT */
+.hub-content { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+.cat-label { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; margin-top: 2.5rem; }
+.cat-label:first-child { margin-top: 0; }
+.cat-label-text { font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); white-space: nowrap; }
+.cat-label-line { flex: 1; height: 1px; background: var(--sand); }
+
+/* POLICY ROWS */
+.policy-rows {
+  display: flex; flex-direction: column;
+  background: var(--warm-white); border: 1px solid var(--sand);
+  border-radius: 14px; overflow: hidden;
+}
+.policy-row {
+  display: grid; grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  border-bottom: 1px solid var(--cream-mid);
+  cursor: pointer; transition: background 0.15s;
+  text-decoration: none; color: var(--ink);
+}
+.policy-row:last-child { border-bottom: none; }
+.policy-row:hover { background: var(--cream); }
+.policy-row:hover .row-arrow { opacity: 1; transform: translateX(0); }
+.policy-row.hidden { display: none; }
+.row-num { padding: 1.2rem 0 1.2rem 1.25rem; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--sand); line-height: 1; }
+.row-body { padding: 1.1rem 1rem; display: flex; flex-direction: column; gap: 3px; }
+.row-title { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+.row-desc { font-size: 0.78rem; color: var(--ink-light); font-weight: 300; line-height: 1.5; }
+.row-right { padding: 1.1rem 1.25rem 1.1rem 0.5rem; display: flex; align-items: center; gap: 8px; }
+.row-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+.tag-green { background: var(--green-faint); color: var(--green); }
+.tag-rust  { background: var(--rust-pale); color: var(--rust); }
+.tag-gold  { background: var(--gold-pale); color: var(--gold); }
+.tag-sand  { background: var(--cream-deep); color: var(--ink-mid); }
+.row-arrow { color: var(--green); opacity: 0; transform: translateX(-4px); transition: all 0.15s; font-size: 14px; }
+
+/* ── POLICY PAGE ── */
+.policy-page { max-width: 820px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+
+.back-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 400; color: var(--ink-light);
+  cursor: pointer; margin-bottom: 2rem;
+  padding: 7px 14px 7px 10px;
+  background: var(--warm-white); border: 1px solid var(--sand);
+  border-radius: 8px; transition: all 0.15s;
+  text-decoration: none;
+}
+.back-btn:hover { background: var(--cream-deep); color: var(--ink); }
+
+.policy-header {
+  border-bottom: 1px solid var(--sand);
+  padding-bottom: 1.75rem;
+  margin-bottom: 2.25rem;
+}
+.policy-schedule-tag {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--green); background: var(--green-faint);
+  padding: 4px 10px; border-radius: 5px; margin-bottom: 0.9rem;
+}
+.policy-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 600; color: var(--ink); line-height: 1.15;
+}
+
+/* Policy content typography */
+.policy-content { font-size: 0.9rem; line-height: 1.8; color: var(--ink-mid); }
+.policy-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 600;
+  color: var(--ink); margin: 2.25rem 0 0.75rem;
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--cream-mid);
+}
+.policy-content h3 {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.9rem; font-weight: 500;
+  color: var(--ink); margin: 1.75rem 0 0.6rem;
+  text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.8rem;
+}
+.policy-content h4 {
+  font-size: 0.9rem; font-weight: 500;
+  color: var(--ink); margin: 1.25rem 0 0.4rem;
+}
+.policy-content p { margin-bottom: 1rem; }
+.policy-content ul, .policy-content ol {
+  margin: 0.75rem 0 1rem 1.5rem;
+}
+.policy-content li { margin-bottom: 0.45rem; line-height: 1.7; }
+.policy-content strong { font-weight: 500; color: var(--ink); }
+
+.policy-content .lettered-item {
+  display: grid; grid-template-columns: 22px 1fr;
+  gap: 0; margin-bottom: 0.5rem;
+}
+.policy-content .lettered-label { color: var(--ink-light); font-weight: 400; }
+
+.info-box {
+  background: var(--green-faint); border-left: 3px solid var(--green);
+  padding: 1rem 1.25rem; border-radius: 0 8px 8px 0;
+  margin: 1.25rem 0; font-size: 0.875rem; color: var(--ink-mid);
+}
+
+/* FOOTER */
+.foot {
+  background: var(--cream-deep); border-top: 1px solid var(--sand);
+  padding: 1.5rem 2rem; text-align: center;
+  font-size: 12px; color: var(--ink-light); font-weight: 300;
+}
+
+@media (max-width: 680px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .header-search { display: none; }
+  .header-tag { display: none; }
+  .hub-content { padding: 2rem 1rem 4rem; }
+  .policy-rows { border-radius: 10px; }
+  .policy-row { grid-template-columns: 44px 1fr; }
+  .row-right { display: none; }
+  .policy-page { padding: 1.5rem 1rem 4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HEADER (always visible)
+═══════════════════════════════════════ -->
+<header class="header">
+  <div class="logo" onclick="showHub()">
+    <div class="logo-mark">
+      <svg width="16" height="16" viewBox="0 0 16 16">
+        <path d="M8 2L14 5.5V10.5L8 14L2 10.5V5.5L8 2Z" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-text">Albany Insurance Brokers</div>
+      <div class="logo-sub">Employee Handbook</div>
+    </div>
+  </div>
+  <div class="header-search" id="hubSearch">
+    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+    </svg>
+    <input type="text" placeholder="Search policies…" id="searchInput">
+  </div>
+  <div class="header-tag">Version 02 / 2025</div>
+</header>
+
+
+<!-- ═══════════════════════════════════════
+     HUB VIEW
+═══════════════════════════════════════ -->
+<div class="view active" id="view-hub">
+
+  <section class="hero">
+    <div class="hero-left">
+      <div>
+        <div class="hero-label">Albany Insurance Brokers Ltd</div>
+        <h1 class="hero-title">Your guide to<br><em>working here</em></h1>
+        <p class="hero-body">Everything you need — policies, procedures and guidance — all in one place. Select any section to read the full policy.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span>21</span><span>Schedules</span></div>
+        <div class="hero-stat"><span>V02</span><span>Current version</span></div>
+        <div class="hero-stat"><span>2025</span><span>Last updated</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h3>Most visited policies</h3>
+      <div class="quick-links">
+        <div class="quick-link" onclick="showPolicy('s8')"><span class="quick-link-left"><span class="quick-link-icon">🌴</span>Holidays &amp; time off</span><span class="quick-link-arrow">→</span></div>
+        <div class="quick-link" onclick="showPolicy('s11')"><span class="quick-link-left"><span class="quick-link-icon">🏥</span>Sickness absence</span><span class="quick-link-arrow">→</span></div>
+        <div class="quick-link" onclick="showPolicy('s9')"><span class="quick-link-left"><span class="quick-link-icon">⚖️</span>Disciplinary &amp; capability</span><span class="quick-link-arrow">→</span></div>
+        <div class="quick-link" onclick="showPolicy('s12')"><span class="quick-link-left"><span class="quick-link-icon">👶</span>Maternity &amp; paternity</span><span class="quick-link-arrow">→</span></div>
+        <div class="quick-link" onclick="showPolicy('s3')"><span class="quick-link-left"><span class="quick-link-icon">🧾</span>Expenses</span><span class="quick-link-arrow">→</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="notice">
+    <svg class="notice-icon" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+    This handbook does not form part of your Contract of Employment and may be amended at any time. If you have questions about any policy, please speak to your line manager or the Compliance/HR team.
+  </div>
+
+  <div class="hub-content">
+
+    <div class="cat-label"><span class="cat-label-text">Your employment</span><span class="cat-label-line"></span></div>
+    <div class="policy-rows">
+      <div class="policy-row" onclick="showPolicy('s1')" data-search="general policies joining induction probation hours flexible working conduct appraisal training relocation">
+        <div class="row-num">01</div><div class="row-body"><div class="row-title">General Policies &amp; Joining</div><div class="row-desc">Induction, probation, hours of work, flexible working, standards of conduct</div></div>
+        <div class="row-right"><span class="row-tag tag-green">Joining</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s7')" data-search="pay salary benefits pension income tax national insurance payslip pay review">
+        <div class="row-num">07</div><div class="row-body"><div class="row-title">Pay, Benefits &amp; Pensions</div><div class="row-desc">Salary arrangements, pay reviews, tax, national insurance and pension scheme</div></div>
+        <div class="row-right"><span class="row-tag tag-gold">Pay</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s2')" data-search="dress code appearance attire smart casual religious cultural hygiene friday">
+        <div class="row-num">02</div><div class="row-body"><div class="row-title">Dress Code</div><div class="row-desc">Standards of dress and appearance, cultural and religious dress, personal hygiene</div></div>
+        <div class="row-right"><span class="row-tag tag-sand">Conduct</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s3')" data-search="expenses travel accommodation mileage entertaining clients eyesight CII membership receipts">
+        <div class="row-num">03</div><div class="row-body"><div class="row-title">Expenses</div><div class="row-desc">Travel, accommodation, client entertaining, eyesight tests and professional memberships</div></div>
+        <div class="row-right"><span class="row-tag tag-gold">Finance</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s16')" data-search="termination leaving notice garden leave resignation retirement dismissal redundancy">
+        <div class="row-num">16</div><div class="row-body"><div class="row-title">Termination of Employment</div><div class="row-desc">Notice periods, garden leave, conditions on leaving and retirement</div></div>
+        <div class="row-right"><span class="row-tag tag-sand">Leaving</span><span class="row-arrow">→</span></div>
+      </div>
+    </div>
+
+    <div class="cat-label"><span class="cat-label-text">Leave &amp; absence</span><span class="cat-label-line"></span></div>
+    <div class="policy-rows">
+      <div class="policy-row" onclick="showPolicy('s8')" data-search="holidays annual leave time off entitlement booking carry over sickness bank holiday">
+        <div class="row-num">08</div><div class="row-body"><div class="row-title">Holidays &amp; Time Off</div><div class="row-desc">Holiday entitlement, booking leave, sickness during holidays, carry-over rules</div></div>
+        <div class="row-right"><span class="row-tag tag-green">Leave</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s11')" data-search="sickness absence sick pay SSP reporting return to work fit note self certification">
+        <div class="row-num">11</div><div class="row-body"><div class="row-title">Sickness Absence</div><div class="row-desc">Reporting sickness, sick pay, return to work interviews, managing long-term absence</div></div>
+        <div class="row-right"><span class="row-tag tag-green">Leave</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s12')" data-search="maternity pregnancy leave SMP keeping in touch days notification ante natal">
+        <div class="row-num">12</div><div class="row-body"><div class="row-title">Maternity Policy</div><div class="row-desc">Leave entitlement, notification requirements, keeping in touch days and statutory pay</div></div>
+        <div class="row-right"><span class="row-tag tag-green">Leave</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s13')" data-search="paternity shared parental leave SPP partner birth adoption">
+        <div class="row-num">13</div><div class="row-body"><div class="row-title">Paternity &amp; Shared Parental Leave</div><div class="row-desc">Paternity leave, shared parental leave, notification and pay entitlements</div></div>
+        <div class="row-right"><span class="row-tag tag-green">Leave</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s14')" data-search="compassionate bereavement parental dependants time off emergency unpaid funeral">
+        <div class="row-num">14</div><div class="row-body"><div class="row-title">Additional Leave</div><div class="row-desc">Compassionate leave, unpaid parental leave and time off for dependants</div></div>
+        <div class="row-right"><span class="row-tag tag-green">Leave</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s15')" data-search="jury service public duties reserve forces magistrate councillor territorial army">
+        <div class="row-num">15</div><div class="row-body"><div class="row-title">Time Off for Public Duties</div><div class="row-desc">Jury service, voluntary public duties, reserve forces leave</div></div>
+        <div class="row-right"><span class="row-tag tag-sand">Leave</span><span class="row-arrow">→</span></div>
+      </div>
+    </div>
+
+    <div class="cat-label"><span class="cat-label-text">Conduct &amp; procedures</span><span class="cat-label-line"></span></div>
+    <div class="policy-rows">
+      <div class="policy-row" onclick="showPolicy('s9')" data-search="disciplinary capability misconduct gross misconduct warning dismissal appeal hearing investigation">
+        <div class="row-num">09</div><div class="row-body"><div class="row-title">Disciplinary &amp; Capability</div><div class="row-desc">Rules of conduct, misconduct, gross misconduct, the process and appeals</div></div>
+        <div class="row-right"><span class="row-tag tag-rust">Conduct</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s10')" data-search="grievance complaint mediation formal informal appeal procedure">
+        <div class="row-num">10</div><div class="row-body"><div class="row-title">Grievance Procedures</div><div class="row-desc">Raising a formal grievance, mediation options and the appeals process</div></div>
+        <div class="row-right"><span class="row-tag tag-rust">Conduct</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s4')" data-search="equality inclusion diversity discrimination equal opportunities recruitment promotion">
+        <div class="row-num">04</div><div class="row-body"><div class="row-title">Equality, Inclusion &amp; Diversity</div><div class="row-desc">Our commitment to equal opportunities and a discrimination-free workplace</div></div>
+        <div class="row-right"><span class="row-tag tag-green">People</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s5')" data-search="harassment bullying dignity sexual unwanted conduct complaint formal informal victimisation">
+        <div class="row-num">05</div><div class="row-body"><div class="row-title">Harassment &amp; Dignity at Work</div><div class="row-desc">Raising concerns about personal harassment, formal and informal routes</div></div>
+        <div class="row-right"><span class="row-tag tag-rust">People</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s6')" data-search="CSR corporate social responsibility environment ethics volunteering community stress wellbeing">
+        <div class="row-num">06</div><div class="row-body"><div class="row-title">Corporate Social Responsibility</div><div class="row-desc">Environment, ethics, human rights, community and stress at work</div></div>
+        <div class="row-right"><span class="row-tag tag-green">Values</span><span class="row-arrow">→</span></div>
+      </div>
+    </div>
+
+    <div class="cat-label"><span class="cat-label-text">Health, safety &amp; technology</span><span class="cat-label-line"></span></div>
+    <div class="policy-rows">
+      <div class="policy-row" onclick="showPolicy('s18')" data-search="health safety fire evacuation accident personal safety risk electrical">
+        <div class="row-num">18</div><div class="row-body"><div class="row-title">Health &amp; Safety</div><div class="row-desc">Your responsibilities, fire safety procedures, evacuation and personal safety</div></div>
+        <div class="row-right"><span class="row-tag tag-rust">Safety</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s17')" data-search="smoking drugs alcohol smoke free workplace unlawful substances e-cigarette">
+        <div class="row-num">17</div><div class="row-body"><div class="row-title">Smoking &amp; Unlawful Drugs</div><div class="row-desc">Smoke-free workplace, where smoking is permitted, unlawful substance rules</div></div>
+        <div class="row-right"><span class="row-tag tag-rust">Safety</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s20')" data-search="IT internet email password computer mobile phone data security monitoring acceptable use">
+        <div class="row-num">20</div><div class="row-body"><div class="row-title">IT &amp; Communications Systems</div><div class="row-desc">Acceptable use of IT, email, internet, mobile phones and data security</div></div>
+        <div class="row-right"><span class="row-tag tag-sand">IT</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s19')" data-search="data protection GDPR confidentiality personal data privacy employee">
+        <div class="row-num">19</div><div class="row-body"><div class="row-title">Data Protection (Employee Data)</div><div class="row-desc">GDPR obligations, confidentiality and handling of employee personal data</div></div>
+        <div class="row-right"><span class="row-tag tag-sand">IT</span><span class="row-arrow">→</span></div>
+      </div>
+      <div class="policy-row" onclick="showPolicy('s21')" data-search="social media LinkedIn Facebook Twitter Instagram personal use prohibited posting reputation">
+        <div class="row-num">21</div><div class="row-body"><div class="row-title">Social Media</div><div class="row-desc">Personal and business use, prohibited content and consequences of breach</div></div>
+        <div class="row-right"><span class="row-tag tag-sand">IT</span><span class="row-arrow">→</span></div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- end hub -->
+
+
+<!-- ═══════════════════════════════════════
+     POLICY PAGES
+═══════════════════════════════════════ -->
+
+<!-- S1: General Policies -->
+<div class="view" id="view-s1">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 1</div>
+    <h1>General Policies &amp; Joining our Organisation</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. Introduction</h2>
+    <p>We are an equal opportunities employer and do not discriminate on the grounds of gender, sexual orientation, marital or civil partner status, pregnancy or maternity, gender reassignment, race, colour, nationality, ethnic or national origin, religion or belief, disability or age.</p>
+
+    <h2>2. Induction</h2>
+    <p>At the start of your employment with The Company, you are required to complete an induction programme, during which all our policies and procedures (including Health and Safety) will be explained to you. Information relating to these will be given to you at the induction.</p>
+
+    <h2>3. Job Description, Flexibility and Mobility</h2>
+    <p>Amendments may be made to your job description from time to time in relation to our changing needs and your own ability.</p>
+    <p>It is an express condition of employment that you are prepared, whenever necessary, to transfer to alternative departments or duties within our business. During holiday periods, etc. it may be necessary for you to take over some duties normally performed by colleagues. This flexibility is essential for operational efficiency as the type and volumes of work are always subject to change.</p>
+    <p>Although you are usually employed at one site, it is a condition of your employment that you are prepared, whenever applicable, to work from any other location as we may request. This mobility is essential to the smooth running of our business. There is a facility to work from home when and where required. This may be particularly necessary during periods of severe weather, and your manager will provide further instructions regarding this as appropriate.</p>
+
+    <h2>4. Documentation required on commencement</h2>
+    <p>When you start with The Company, you will be asked to supply the following:</p>
+    <ul>
+      <li>Details of referees – we ask for two references, ideally your most recent employers but if you have not held two previous jobs, then a character reference will suffice.</li>
+      <li>P45 or P46 once received from your previous employer.</li>
+      <li>Proof of identity e.g. passport or driving licence.</li>
+      <li>Evidence of qualifications (if applicable).</li>
+    </ul>
+
+    <h2>5. Our Relocation Policy</h2>
+    <p>Assistance with relocation expenses will be granted if we are satisfied that your relocation is required in order for you to undertake the duties of the post for which you have been employed. Eligibility and any sums paid are purely at the discretion of The Company, and this is not a contractual right.</p>
+    <p>You will be required to sign a written undertaking to repay all or some of the expenses reimbursed if you leave within 24 months of receipt of these expenses.</p>
+
+    <h2>6. Probation Periods</h2>
+    <p>All new employees are subject to a probationary period of six months. An initial informal review will take place after three months with your manager, with a formal review after six months. Your appointment will be confirmed on satisfactory completion of the six-month period. During this probationary period, you will be given appropriate support and development opportunity to help you reach the required standards. Extension of the probationary period may be granted to enable the required standards to be achieved, but failure to do so could result in termination of your employment.</p>
+
+    <h2>7. Hours of Work</h2>
+    <p>Your normal hours and working pattern will be specified in your Statement of Terms and Conditions of Employment.</p>
+    <p>The full-time contracted hours for all posts within the organisation are 35 hours per week excluding daily meal breaks. A daily unpaid lunch break of a minimum of 30 minutes must be taken if you work more than six hours daily.</p>
+    <p>The Company reserves the right to vary your hours and pattern of working, following consultation and agreement with you.</p>
+    <p>Persistent poor timekeeping means that colleagues are put under pressure to cover your duties. This is not acceptable and will therefore be treated as a disciplinary offence under our disciplinary procedures.</p>
+
+    <h2>8. Flexible Working</h2>
+    <p>This procedure does not form part of your Contract of Employment and can be amended at any time.</p>
+    <p>We are committed to providing equality of opportunity in employment and to developing work practices and policies that support work-life balance. Eligible employees will have an opportunity to formally request a change to their working pattern in accordance with the statutory procedure for such requests.</p>
+    <p>The Company is committed to agreeing any flexible working arrangements, provided that the needs and objectives of both the business and the employee can be met.</p>
+    <p>No employee who makes a request for flexible working will be subjected to any detriment or lose any career development opportunities as a result.</p>
+    <h3>Forms of flexible working</h3>
+    <p>Flexible working can incorporate several possible changes to working arrangements, such as:</p>
+    <ul>
+      <li>Reduction or variation of working hours.</li>
+      <li>Reduction of the number of days worked each week.</li>
+      <li>Working from a different location (for example, from home).</li>
+    </ul>
+    <p>These examples are the typical arrangements that employees will request. However, we recognise that there may be alternatives or a combination of options which are suitable to both the business and the employee.</p>
+    <h3>Eligibility for the formal right to request</h3>
+    <p>To be eligible to make a request under the formal procedure, you must:</p>
+    <ul>
+      <li>Be an employee.</li>
+      <li>Have worked for us continuously for 26 weeks at the date your request is made; and</li>
+      <li>Not have made a formal request to work flexibly during the last 12 months (each 12-month period runs from the date when the most recent application was made).</li>
+    </ul>
+    <p>You will need to submit a written application to your manager at least 2 months before you would like the changes to take effect, if you would like your flexible working request to be considered under the formal procedure.</p>
+    <p>The business will consider the proposed flexible working arrangements. Each request will be considered on a case-by-case basis, in the order they are received. Agreeing to one request will not set a precedent or create the right for another employee to be granted a similar change to their working pattern.</p>
+    <p>If you are not eligible to make a formal request, you may wish to consider making an informal request.</p>
+    <p>Please note that flexible working is not an automatic or statutory entitlement.</p>
+
+    <h2>9. Disclosure and Barring Certificates</h2>
+    <p>Your initial employment may be conditional upon the provision of a satisfactory Disclosure and Barring Certificate of a level appropriate for your post. You may also be required to undertake subsequent criminal record checks and credit checks from time to time during your employment as deemed appropriate by The Company. If such certificates are not supplied, your employment with us may be terminated. This is at the discretion of your manager and the Directors.</p>
+    <p>Data collected about criminal convictions will be processed in line with the Data Protection Act. You may read more about the data we hold on you, why we hold it and the lawful basis that applies in our privacy policy.</p>
+
+    <h2>10. Convictions and Offences</h2>
+    <p>During your employment, you are required to immediately report to us any convictions or offences with which you are charged, including traffic offences. Data collected about criminal convictions will be processed in line with the Data Protection Act. You may read more about the data we hold on you, why we hold it and the lawful basis that applies in our privacy policy.</p>
+
+    <h2>11. Conflict of Interest</h2>
+    <p>You should not, directly or indirectly, engage in, or have any interest, financial or otherwise, in any other business enterprise, which interferes or is likely to interfere with your independent exercise of judgement in The Company's best interest.</p>
+    <p>Generally, a conflict of interests exists when an employee is involved in an activity:</p>
+    <ul>
+      <li>Which provides products or services directly to, or purchase products or services from The Company.</li>
+      <li>Which subjects the employee to unreasonable time demands that prevent the employee from devoting proper attention to his or her responsibilities to The Company.</li>
+      <li>Which is so operated that the employee's involvement with the outside business activity will reflect adversely on The Company.</li>
+    </ul>
+    <p>Should you be in doubt as to whether an activity involves a conflict, you should discuss the situation with your manager.</p>
+    <p>Further information is also available in our separate "Conflicts of Interest" Policy.</p>
+
+    <h2>12. Standards of Performance and Behaviour at Work</h2>
+    <h3>I. Company Premises</h3>
+    <p>You will be advised of the access code to our workplace. This remains the property of The Company and any accidental disclosure to someone must be reported immediately to your manager. You must not disclose the access code to any third party unless authorisation is obtained from a Director.</p>
+    <p>You must not bring any unauthorised person onto The Company's property without prior agreement from your manager, unless you are authorised to do so as part of your job. In these circumstances you are responsible for ensuring that your visitors are appropriately monitored during their stay, and that they do not access areas or company property inappropriately.</p>
+    <p>You must not remove The Company's property from the organisation's premises unless prior authority from your manager has been given.</p>
+    <p>The premises must be secure when unattended. The last person to leave the premises must ensure that lights and appropriate electrical equipment are switched off, blinds are down, windows and doors are secure, and alarms are set accordingly.</p>
+    <h3>II. Keyholding/alarm setting</h3>
+    <p>If you are an allocated key holder, you must ensure that all procedures and guidelines are followed when securing the building prior to leaving. The keys and any security measure such as alarm codes and fobs must be kept safe at all times. You must not give the keys or alarm code to any third party unless authorisation is obtained from your manager. Any loss or damage caused as a result of your failure to follow procedures or your negligence in ensuring the safekeeping of the keys and alarm code will result in disciplinary action which could lead to your summary dismissal. We also reserve the right to deduct the cost of any loss, repair or replacement from any monies owing to you.</p>
+    <p>Any breaches or security issues including the loss or theft of keys must be reported immediately to your manager.</p>
+    <h3>III. Personal Property</h3>
+    <p>Any personal property such as jewellery, cash, credit cards, clothes, cars, motorbikes or bicycles etc. left on The Company's premises is done so entirely at your own risk. You are strongly advised not to leave any valuables unattended, either on our premises, or in your own vehicle. The Company does not accept liability for loss or damage to any personal property whatsoever.</p>
+    <h3>IV. Telephones &amp; Correspondence</h3>
+    <p>Company telephone / mobile phone or postal facilities must not be used for private purposes without prior permission from your manager. If, for any reason, personal use is made of these items then arrangements may be made to pay the cost price of all services used. Abuse of these facilities will be considered a disciplinary matter. Reasonable use of your personal mobile phones is permitted within working hours.</p>
+    <h3>V. Security</h3>
+    <p>Access to the building is available from 8am to 5.00pm Monday to Friday. If you wish to enter the building or grounds outside of these hours, please contact your manager to discuss your request.</p>
+    <h3>VI. Car Parking</h3>
+    <p>Please ensure that you park only in the designated area. The Company must ensure there is adequate parking for visitors; therefore, employees must park within the appropriate area.</p>
+    <h3>VII. Work Areas</h3>
+    <p>We operate a Clear Desk policy, and all papers should be removed from view at the end of the working day and stored in a locked drawer or cabinet where possible.</p>
+    <p>Workstations should be locked down (i.e. needing your password to activate the computer) if away from your desk for more than just a minute or two, e.g. when you are in a meeting or on a break.</p>
+    <h3>VIII. Housekeeping</h3>
+    <p>All employees are required to co-operate with management in maintaining a safe, clean environment and for ensuring that all areas are maintained in a clean, tidy and inviting condition – this could be the lobby, kitchen, toilets in addition to the open office and meeting rooms. Work areas must be always kept clean and tidy.</p>
+    <p>Hot food should not be eaten within the work area.</p>
+    <p>Kitchen facilities are to be always kept clean and take responsibility for your own crockery. Do not leave glassware in soak as this can cause injury to others who are unaware of its presence.</p>
+    <p>Maintenance issues should be reported to your manager or to a Director.</p>
+    <h3>IX. Behaviour at Work</h3>
+    <p>You should behave with civility towards fellow employees, and no rudeness will be permitted towards clients or members of the public. Objectionable or insulting behaviour, or bad language will render you liable to disciplinary action.</p>
+    <p>You should use your best endeavours to promote the interests of the business and shall, during normal working hours, devote the whole of your time, attention and abilities to the business and its affairs.</p>
+    <h3>X. Behaviour outside of Work</h3>
+    <p>We recognise the importance of work/life balance. However, owing to the nature of the business, we insist on employing employees of the highest integrity and we expect you to maintain these standards outside of working hours. Activities that result in adverse publicity to us, or which cause us to lose faith in your integrity, may give us grounds for your dismissal.</p>
+    <h3>XI. Personal Relationships</h3>
+    <p>We recognise that, from time to time, close personal relationships may develop between members of staff and between employees and customers. In order to ensure that potential conflicts of interest are avoided, employees are required to inform us of any relationship which may affect their work or compromise the business in any way.</p>
+    <p>Any such information will be treated in the strictest confidence. We fully acknowledge the right of employees to privacy in their personal affairs. However, experience has shown that the effect of such relationships can cause a blurring of judgement whereby conflicts of interest arise.</p>
+    <h3>XII. Driving Licence and Car Insurance</h3>
+    <p>If driving is a necessary part of your role, it is imperative that you maintain a valid driving licence suitable for the vehicle that you operate during your employment. You are required upon request to produce your driving licence to us. We may also require you to provide us with the ability to access your driving licence details online. If at any time your licence is endorsed, or you are disqualified from driving, we must be informed immediately. If you are required to drive as part of your job and we are unable to find alternative employment, your employment may be terminated.</p>
+    <p>If your position requires you to use your own car for business purposes, you must ensure that your car insurance provides adequate cover. Proof of adequate insurance, Driving Licence, Tax and an MOT Certificate must be produced for scrutiny by us when so requested.</p>
+    <p>We will not be held responsible for any fines (e.g. parking, speeding, etc.) incurred by you whilst working for us.</p>
+    <p>It is illegal to use a mobile phone whilst driving (without a hands-free set). It is The Company policy that you should not use any mobile phones whilst driving.</p>
+    <p>Further information is also available in our separate "Driving for Work" Policy.</p>
+    <h3>XIII. Company Equipment</h3>
+    <p>We provide equipment necessary to carry out your duties. You should keep these in good repair and take all reasonable steps to ensure that they are secure at all times. You must report any lost, damaged or mislaid equipment to your manager. You must return all equipment belonging to The Company upon the termination of your employment by either party.</p>
+
+    <h2>13. Training and Development</h2>
+    <p>The Company aims to provide training opportunities which will provide a progressive training and development scheme to enable employees to develop competence, relevant skills and acquire knowledge to underpin their current role and career aspirations.</p>
+
+    <h2>14. Employee Appraisal Scheme</h2>
+    <p>We have an employee appraisal scheme in place for the purpose of monitoring staff performance levels with a view to maximising the effectiveness of individuals, details of which are available separately.</p>
+  </div>
+</div>
+</div>
+
+<!-- S2: Dress Code -->
+<div class="view" id="view-s2">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 2</div>
+    <h1>Dress Code Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. About this policy</h2>
+    <p>We encourage everyone to maintain an appropriate standard of dress and personal appearance at work. The purpose of our dress code is to establish basic guidelines on appropriate clothing and appearance at our workplace, so that we:</p>
+    <ul>
+      <li>Promote a positive and professional image.</li>
+      <li>Respect the needs of men and women from all cultures and religions.</li>
+      <li>Make any adjustments that may be needed because of disability.</li>
+      <li>Take account of health and safety requirements; and</li>
+      <li>Help all employees to decide what clothing it is appropriate to wear to work.</li>
+    </ul>
+    <p>Managers are responsible for ensuring that this dress code is observed and that a common-sense approach is taken to any issues that may arise. Any enquiries regarding the operation of our dress code (including whether an article of clothing is suitable to wear to work) should be made to your manager.</p>
+    <p>Failure to comply with the dress code will result in action under our Disciplinary Procedure.</p>
+    <p>We will review our dress code periodically to ensure that it reflects appropriate standards and continues to meet our needs.</p>
+
+    <h2>2. Appearance</h2>
+    <p>While working for us you represent us with customers and the public. Your appearance contributes to our reputation and the development of our business.</p>
+    <p>It is important that you always appear clean and smart when at work, particularly when you may be in contact with clients, other business contacts or the general public.</p>
+    <p>Office based employees should dress in smart attire.</p>
+    <p>All employees when visiting customers should wear smart business attire.</p>
+    <p>You should not wear gym or beach wear to work. This includes track suits, sweatshirts, t-shirts or shorts, combat trousers, jogging bottoms, denim, or leggings. Clothing should not be dirty, frayed or torn. Tops should not carry wording or pictures that might be offensive or cause damage to our reputation. It is inappropriate to wear cut-off shorts, crop tops, see-through material or clothing that exposes areas of the body normally covered at work.</p>
+    <p>Footwear must be safe and clean and take account of health and safety.</p>
+    <p>Where we provide safety clothing and equipment, including protective footwear, it should be worn or used as appropriate and directed.</p>
+    <p>You should not wear clothing or jewellery that could present a health and safety risk.</p>
+    <p>We operate a more relaxed form of dress code on a Friday and on other days subject to managerial direction.</p>
+
+    <h2>3. Religious and cultural dress</h2>
+    <p>You may wear appropriate religious and cultural dress (including clerical collars, head scarves, skullcaps and turbans) unless it creates a health and safety risk to you or any other person or otherwise breaches this policy.</p>
+    <p>Where necessary a Director can give further information and guidance on cultural and religious dress in the workplace.</p>
+    <p>Priority is always given to health and safety requirements. Where necessary, advice should be taken from a Director.</p>
+
+    <h2>4. Personal Hygiene</h2>
+    <p>Your highest attention to your own personal hygiene is always requested, as you work in proximity with our clients and customers.</p>
+  </div>
+</div>
+</div>
+
+<!-- S3: Expenses -->
+<div class="view" id="view-s3">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 3</div>
+    <h1>Expenses Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. About this policy</h2>
+    <p>This policy deals with claims for reimbursement of expenses, including travel, accommodation and hospitality.</p>
+
+    <h2>2. Reimbursement of expenses</h2>
+    <p>We will reimburse expenses properly incurred in accordance with this policy. Any attempt to claim expenses fraudulently or otherwise in breach of this policy will result in disciplinary action.</p>
+    <p>Expenses will only be reimbursed if they are:</p>
+    <ul>
+      <li>Incurred solely in connection with the business of The Company and in accordance with paragraphs 3 to 7 below.</li>
+      <li>Submitted on the appropriate claim form and supported by relevant documents (for example, receipts, tickets, and credit or debit card slips).</li>
+      <li>Authorised by a Director.</li>
+    </ul>
+    <p>Claims for authorised expenses submitted in accordance with this policy will be paid directly into your bank/building society account.</p>
+    <p>Any questions about the reimbursement of expenses should be put to your manager before you incur the relevant costs.</p>
+
+    <h2>3. Travel expenses</h2>
+    <p>We will reimburse the reasonable cost of necessary travel in connection with our business. The most economic means of travel should be chosen if practicable. The following are not treated as travel in connection with our business:</p>
+    <ul>
+      <li>Travel between your home and usual place of work.</li>
+      <li>Travel which is mainly for your own purposes.</li>
+    </ul>
+    <p><strong>Trains.</strong> We will reimburse the cost of standard class travel on submission of a receipt with expenses claim form.</p>
+    <p><strong>Car.</strong> Where it is cost effective for you to use your car for business travel, and you have been authorised to do so, you can claim a mileage allowance on proof of mileage. Details of the current mileage rates can be obtained from your manager or a Director. You can also claim for any necessary parking costs which must be supported by a receipt or the display ticket.</p>
+    <p><strong>Air travel.</strong> If you are required to travel by plane in the course of your duties, you should discuss travel arrangements with your manager in advance.</p>
+    <p>We will not reimburse penalty fares or fines for parking or driving offences, other than at our discretion in exceptional circumstances.</p>
+
+    <h2>4. Accommodation and other overnight expenses</h2>
+    <p>If you are required to stay away overnight in the course of your duties you should discuss accommodation arrangements with your manager in advance.</p>
+
+    <h2>5. Entertaining customers</h2>
+    <p>You may entertain actual or prospective customers only where your proposal and an appropriate budget has been agreed in advance with your manager. Receipts must be submitted in full together with your expenses claim.</p>
+    <p>You must also ensure that the provision of any such hospitality in the circumstances complies with our Anti-Corruption and Bribery Policy.</p>
+
+    <h2>6. Eyesight Tests</h2>
+    <p>Employees whose duties involve regular use of computers are entitled to, but not obliged to, undertake an eye test on a regular basis under Health and Safety Regulations. If corrective lenses are required specifically for use with computers, we will pay for the sight test in full and contribute £50.00 towards the cost. Contributions to eyesight tests will be paid annually and are limited to one test per annum.</p>
+
+    <h2>7. Membership of Professional Bodies (including the Chartered Insurance Institute)</h2>
+    <p>Employees who are members of an appropriate professional body (including the Chartered Insurance Institute) may apply to have their annual membership fee paid by The Company.</p>
+  </div>
+</div>
+</div>
+
+<!-- S4: Equality -->
+<div class="view" id="view-s4">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 4</div>
+    <h1>Equality, Inclusion and Diversity Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. Statement of Policy</h2>
+    <p>The terms equality, inclusion and diversity are at the heart of this policy. 'Equality' means ensuring everyone has the same opportunities to fulfil their potential free from discrimination. 'Inclusion' means ensuring everyone feels comfortable to be themselves at work and feels the worth of their contribution.</p>
+    <p>'Diversity' means the celebration of individual differences amongst the workforce. We will actively support diversity and inclusion and ensure that all our employees are valued and treated with dignity and respect. We want to encourage everyone in our business to reach their potential.</p>
+    <p>We recognise that discrimination is unacceptable and although equality of opportunity has been a long-standing feature of employment practices and procedure, we have made the decision to adopt a formal policy. Breaches of the policy will lead to disciplinary proceedings and, if appropriate, disciplinary action up to and including dismissal.</p>
+    <p>The aim of the policy is to ensure no job applicant, employee or worker is discriminated against either directly or indirectly on the grounds of age, disability, gender reassignment, marriage and civil partnership, pregnancy or maternity, race, religion or belief, sex or sexual orientation.</p>
+    <p>We will ensure that the policy is circulated to any agencies responsible for our recruitment and a copy of the policy will be made available for all employees and made known to all applicants for employment.</p>
+    <p>The policy will be implemented in accordance with the appropriate statutory requirements and full account will be taken of all available guidance, and particularly any relevant Codes of Practice.</p>
+    <p>We will maintain a neutral working environment in which no employee or worker feels under threat or intimidated.</p>
+
+    <h2>2. Recruitment and Selection</h2>
+    <p>The recruitment and selection process is crucially important to any equality, inclusion and diversity policy. We will endeavour through appropriate training to ensure that employees making selection and recruitment decisions will not discriminate, whether consciously or unconsciously, in making these decisions.</p>
+    <p>Promotion and advancement will be made on merit and all decisions relating to this will be made within the overall framework and principles of this policy.</p>
+    <p>Job descriptions, where used, will be revised to ensure that they are in line with this policy. Job requirements will be reflected accurately in any personnel specifications.</p>
+    <p>We will adopt a consistent, non-discriminatory approach to the advertising of vacancies.</p>
+    <p>We will not confine our recruitment to areas or media sources which provide only, or mainly, applicants of a particular group.</p>
+    <p>All applicants who apply for jobs with us will receive fair treatment and will be considered solely on their ability to do the job.</p>
+    <p>All employees involved in the recruitment process will periodically review their selection criteria to ensure that they are related to the job requirements and do not unlawfully discriminate.</p>
+    <p>Short listing and interviewing will be carried out by more than one person where possible.</p>
+    <p>Interview questions will be related to the requirements of the job and will not be of a discriminatory nature.</p>
+    <p>Selection decisions will not be influenced by any perceived prejudices of other employees.</p>
+
+    <h2>3. Training and Promotion</h2>
+    <p>Senior staff will receive training in the application of this policy to ensure that they are aware of its contents and provisions.</p>
+    <p>All promotion will be in line with this policy.</p>
+
+    <h2>4. Monitoring</h2>
+    <p>We will maintain and review the employment records of all employees in order to monitor the progress of this policy.</p>
+    <p>We reserve the right to monitor all email/internet activity by you for the purposes of ensuring compliance with our policies and procedures and of ensuring compliance with the relevant regulatory requirements. This includes monitoring of any additional accounts you may be requested to set up for the purposes of performing your work tasks, which are subject to the same rules as your work email account. Information acquired through such monitoring may be used as evidence in disciplinary proceedings. You are allowed to use The Company email system for your personal use as outlined within our IT and Communications Systems Policy. You may use the internet on company equipment for personal use but only during your designated break time.</p>
+    <p>Monitoring your usage will mean processing your personal data. You may read more about the data we hold on you, why we hold it and the lawful basis that applies in the employee privacy policy.</p>
+  </div>
+</div>
+</div>
+
+<!-- S5: Harassment -->
+<div class="view" id="view-s5">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 5</div>
+    <h1>Personal Harassment and Dignity at Work Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. Introduction</h2>
+    <p>Harassment or victimisation on the grounds of the following protected characteristic: age, disability, gender reassignment, marriage and civil partnership, pregnancy or maternity, race, religion or belief, sex or sexual orientation is unacceptable.</p>
+    <p>Personal harassment takes many forms but whatever form it takes; it is unlawful under the Equality Act 2010 and will not be tolerated.</p>
+    <p>This policy will be reviewed regularly to ensure it remains up to date and to monitor its effectiveness.</p>
+
+    <h2>2. Scope</h2>
+    <p>We deplore all forms of personal harassment and seek to ensure that the working environment is sympathetic to all those who work for us. This includes employees, workers, agency workers, volunteers and contractors in all areas of our organisation.</p>
+
+    <h2>3. Definitions</h2>
+    <h3>Harassment</h3>
+    <p>This is unwanted conduct related to a relevant protected characteristic that has the purpose or effect of violating a person's dignity or creating an intimidating, hostile, degrading, humiliating or offensive environment for that person.</p>
+    <p>Unwanted conduct can include:</p>
+    <ul>
+      <li>spoken words.</li>
+      <li>banter.</li>
+      <li>written words.</li>
+      <li>posts or contact on social media.</li>
+      <li>physical gestures.</li>
+      <li>facial expressions.</li>
+      <li>mimicry.</li>
+      <li>jokes or pranks.</li>
+      <li>acts affecting a person's surroundings.</li>
+      <li>aggression; and</li>
+      <li>physical behaviour towards a person or their property.</li>
+    </ul>
+    <h3>Sexual Harassment</h3>
+    <p>This is unwanted conduct of a sexual nature which has the purpose or effect of violating a person's dignity or creating an intimidating, hostile, degrading, humiliating or offensive environment for that person. This can include:</p>
+    <ul>
+      <li>sexual comments or jokes.</li>
+      <li>displaying sexually graphic pictures, posters or photos.</li>
+      <li>suggestive looks or staring.</li>
+      <li>propositions and sexual advances.</li>
+      <li>making promises in return for sexual favours.</li>
+      <li>sexual gestures.</li>
+      <li>intrusive questions about a person's private or sex life or a person discussing their own sex life.</li>
+      <li>sexual posts or contact on social media.</li>
+      <li>sending sexually explicit emails or text messages; and</li>
+      <li>unwelcome touching, hugging, massaging or kissing.</li>
+    </ul>
+    <h3>Less favourable treatment for rejecting or submitting to unwanted conduct</h3>
+    <p>This occurs when:</p>
+    <ul>
+      <li>someone is subjected to unwanted conduct of a sexual nature, related to sex, or related to gender reassignment.</li>
+      <li>The unwanted conduct has the purpose or effect of violating their dignity or creating an intimidating, hostile, degrading, humiliating or offensive environment for them, and</li>
+      <li>They are treated less favourably because they submitted to or rejected the unwanted conduct.</li>
+    </ul>
+
+    <h2>4. Circumstances which are covered</h2>
+    <p>This policy covers behaviour which occurs in the following situations:</p>
+    <ul>
+      <li>a work situation</li>
+      <li>a situation occurring outside of the normal workplace or normal working hours which is related to work, for example, a working lunch or social event with colleagues.</li>
+      <li>outside of a work situation but against a colleague or other person connected to Albany Insurance Brokers Limited, including on social media.</li>
+      <li>against anyone outside of a work situation where the incident is relevant to their suitability to carry out the role.</li>
+    </ul>
+
+    <h2>5. Complaining about Personal Harassment</h2>
+    <h3>Informal Complaint</h3>
+    <p>We recognise that complaints of personal harassment, and particularly of sexual harassment, can sometimes be of a sensitive or intimate nature and that it may not be appropriate for you to raise the issue through our normal grievance procedure. In these circumstances you are encouraged to raise such issues with a senior colleague of your choice (whether or not that person has a direct supervisory responsibility for you) as a confidential helper. This person cannot be the Director who will be responsible for investigating the matter if it becomes a formal complaint.</p>
+    <p>If you are the victim of minor harassment, you should make it clear to the harasser on an informal basis that their behaviour is unwelcome and ask the harasser to stop. If you feel unable to do this verbally then you should hand a written request to the harasser, and your confidential helper can assist you in this.</p>
+    <h3>Formal Complaint</h3>
+    <p>Where the informal approach fails or if the harassment is more serious, you should bring the matter to the attention of a Director as a formal written complaint and again your confidential helper can assist you in this. If possible, you should keep notes of the harassment so that the written complaint can include:</p>
+    <ul>
+      <li>the name of the alleged harasser.</li>
+      <li>the nature of the alleged harassment.</li>
+      <li>the dates and times when the alleged harassment occurred.</li>
+      <li>the names of any witnesses; and</li>
+      <li>any action already taken by you to stop the alleged harassment.</li>
+    </ul>
+    <p>The person dealing with the complaint will invite you to attend a meeting, at a reasonable time and location, to discuss the matter and carry out a thorough investigation. You have the right to be accompanied at such a meeting by your confidential helper or another work colleague of your choice and you must take all reasonable steps to attend. Those involved in the investigation will be expected to act in confidence and any breach of confidence will be a disciplinary matter.</p>
+    <p>On conclusion of the investigation, which will normally be within ten working days of the meeting with you, the decision of the investigator, detailing the findings, will be sent in writing to you.</p>
+    <p>You have the right to appeal against the findings of the investigator in accordance with the appeal provisions of the grievance procedure.</p>
+
+    <h2>6. Disciplinary Action</h2>
+    <p>If the decision is that the allegation is well founded, the harasser will be liable to disciplinary action in accordance with our disciplinary procedure. An employee who receives a formal warning or who is dismissed for harassment may appeal by using our capability/disciplinary appeal procedure.</p>
+    <p>When deciding on the level of disciplinary sanction to be applied, we will take into consideration aggravating factors such as abuse of power over a more junior colleague.</p>
+    <p>If you bring a complaint of harassment, you will not be victimised for having brought the complaint. However, if it is concluded that the complaint is both untrue and has been brought with malicious intent, disciplinary action will be taken against you.</p>
+  </div>
+</div>
+</div>
+
+<!-- S6: CSR -->
+<div class="view" id="view-s6">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 6</div>
+    <h1>Corporate Social Responsibility Policy</h1>
+  </div>
+  <div class="policy-content">
+    <p>Our Corporate Social Responsibility company policy refers to The Company's responsibility towards its environment. This policy outlines The Company's social responsibility actions.</p>
+    <p>This policy applies to The Company and its subsidiaries regardless of location. It may also refer to suppliers and partners.</p>
+    <h2>1. Policy Elements</h2>
+    <p>The Company wants to be a responsible business that meets the highest standards of professionalism and ethics. It will consider all aspects and interested parties before deciding on its actions. As with all operations and activities, they must be fully aligned with The Company's culture and objectives as well as with shareholder's interests. This does not include any action that is required or prohibited by local or international law.</p>
+    <p>The Company's actions concerning its social responsibility fall under two categories: compliance and pro-activeness.</p>
+    <p>Compliance refers to The Company's commitment to legality and willingness to observe the values of community while conducting its business.</p>
+    <p>Pro-activeness is every initiative we may take to help the community or natural environment and to promote human rights.</p>
+    <h2>2. Considerations</h2>
+    <p><strong>Legality.</strong> The Company will adhere to legal guidelines in terms of procedures, fair dealing and safety. Every partnership or collaboration with external parties or organisations will be open and transparent. Corporate value and financial benefits will result only from legitimate business operations and activities. It will always respect the Law including anti-bribery and anti-corruption practices. The Company is also committed to always honour its own self-regulatory policies.</p>
+    <p><strong>Business Ethics.</strong> The Company will always conduct business with integrity. It will establish appropriate policies and procedures that indicate several aspects of business ethics such as respect towards the consumer, moral corporate governance, anti-corruption practices etc.</p>
+    <p><strong>Protecting the Environment.</strong> The Company recognizes the need to protect the natural environment. Keeping the environment clean and unpolluted is a benefit to all of us. Actions such as disposing of waste, use of chemical substances etc. will always be governed by best practices to avoid contamination and pollution.</p>
+    <p><strong>Protecting People.</strong> The Company will ensure all employees and the external community will not be put to risk from health and safety hazards resulting from The Company's actions.</p>
+    <p><strong>Human Rights.</strong> The Company will remain a committed equal opportunity employer and will incorporate all fair labour practices in employee relations. It will also ensure that its business activities do not directly or indirectly support violations of human rights stipulations in any country (e.g. forced labour).</p>
+    <h2>3. Pro-active Actions</h2>
+    <p><strong>Volunteering.</strong> The Company may encourage its employees who have at least 3 years service to volunteer through relevant programmes. This can refer to programmes that were internally organized or programmes by external organizations in which The Company may participate.</p>
+    <p><strong>Preserving the Environment.</strong> Apart from all actions that are dictated by law, The Company may be proactive when it comes to protecting the environment. Conserving energy, recycling and incorporating environment-friendly technologies are some of the activities to which The Company will give serious attention.</p>
+    <p><strong>Supporting the Community.</strong> The Company may initiate or support several community investment programmes. It may begin partnerships with vendors for educational programmes etc.</p>
+    <h2>4. Stress at Work</h2>
+    <p>We are committed to identifying, tackling and preventing the causes of work-related stress and to providing appropriate support and consideration to employees suffering from stress, on a confidential basis. In particular, we will promote a culture of open communication, participation and encouragement. We want employees to develop their skills and confidence and to feel able to raise any concerns they have about their work or working environment.</p>
+    <p>If you believe you are suffering from stress you should discuss this with your manager in the first instance. If you feel unable to do so you should raise this with another member of staff.</p>
+  </div>
+</div>
+</div>
+
+<!-- S7: Pay -->
+<div class="view" id="view-s7">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 7</div>
+    <h1>Pay, Benefits &amp; Pensions Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. Salary Arrangements</h2>
+    <p>Your salary will be paid monthly in arrears on the 27th of each month, or the closest working day prior, by direct credit transfer to your designated bank account. You will receive a payslip showing how the total amount of your pay has been calculated. It will also show the deductions that have been made and the reasons for them, e.g. Income Tax, national Insurance, Pension Contribution etc.</p>
+    <p>Your basic pay was outlined in your letter of appointment / statement of terms and conditions. Any subsequent amendments to your basic pay will be notified to you in writing by The Company.</p>
+    <p>Part-time employees will be paid on a pro rata basis based on the hours they work. In all other aspects, their salaries will be paid in accordance with the pay arrangements for full-time employees of The Company.</p>
+    <p>If any queries arise regarding pay, or if it looks as if a mistake has been made, speak to your manager immediately so that they can take appropriate action. Unless agreed otherwise, any pay errors, whether of over or underpayment, will be rectified in the next salary payment.</p>
+    <p>Appropriate deductions will be made from pay including income tax and National Insurance contributions (NICs), which are subject to each employee's earning level, family status and the number of hours worked.</p>
+    <h2>2. Income Tax and National Insurance</h2>
+    <p>If there are any changes in your personal circumstances which will affect your tax status, you should notify the Inland Revenue, who will automatically inform The Company of any changes to your tax code. Addresses of local offices and enquiry centres can be found here: http://www.inlandrevenue.gov.uk/menus/officesmenu.htm</p>
+    <p>At the end of each tax year, you will be given a form P60 showing the total pay you have received from us during that year and the amount of deductions for Income Tax and National Insurance. You should keep this document in a safe place as you may need to produce it for tax purposes.</p>
+    <h2>3. Pay Reviews</h2>
+    <p>Salaries are normally reviewed annually, and any increase is at our discretion. The review does not imply an automatic increase in salary.</p>
+    <h2>4. Pension Scheme</h2>
+    <p>We operate a contributory pension scheme into which you will be automatically enrolled (subject to the conditions of the scheme). Details should have been received when you started (if you have not yet received this, please speak to a Director). The scheme enables you to save for your retirement using your own money, together with tax relief and contributions from The Company. You may elect to opt out of the scheme if you so wish.</p>
+    <p>Please note that no member of The Company can advise you on whether you should join or not. If you are unsure, you should seek independent financial advice.</p>
+  </div>
+</div>
+</div>
+
+<!-- S8: Holidays -->
+<div class="view" id="view-s8">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 8</div>
+    <h1>Holidays and Time Off Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. About this Policy</h2>
+    <p>This policy sets out our arrangements for employees wishing to book holidays (also known as annual leave). Your annual holiday entitlement is shown in your individual Contract of Employment.</p>
+    <p>This policy covers all employees at all levels and grades, including full-time, part-time, permanent and fixed-term employees, Directors, managers, trainees, and homeworkers.</p>
+    <h2>2. Your Holiday Entitlement</h2>
+    <p>The Company's holiday year runs from 1st January to 31st December. If your employment starts or finishes part way through the holiday year, your holiday entitlement during that year shall be calculated on a pro-rata basis. Your holiday pay will be at your normal basic pay unless shown otherwise in your Contract of Employment.</p>
+    <p>Unless otherwise set out in your Contract of Employment, you are entitled to 25 days paid holiday in each holiday year, or the pro rata equivalent if you work part time. In addition, you are entitled to take the usual bank/public holidays in England and Wales, or the pro rata equivalent if you work part time.</p>
+    <p>It is our policy to encourage you to take all of your holiday entitlement in the current holiday year. Except as set out in this policy, holiday entitlement must be taken during the holiday year in which it accrues. Any holiday not taken by the end of the holiday year will be lost and you will not receive any payment in lieu of untaken holidays.</p>
+    <p>Unused holiday can only be carried over to another holiday year:</p>
+    <ul>
+      <li>in cases involving sickness absence, as set out in paragraph 5.</li>
+      <li>in cases of maternity, paternity, adoption, parental or shared parental leave, as set out in paragraph 6.</li>
+      <li>if otherwise required by law.</li>
+      <li>if authorised by a Director, to a maximum of 3 days, subject to business discretion.</li>
+    </ul>
+    <h2>3. Taking Holiday</h2>
+    <p>All holidays must be approved in advance by The Company. Please give as much notice as possible of holiday requests. For periods exceeding three days, two weeks' notice of holiday requests is required, to allow planning of rotas or work schedules where necessary. You must not make travel bookings until approval has been given. No more than ten working days holiday can be taken at any one time except with the prior agreement of The Company.</p>
+    <p>If you feel that your request has been unreasonably refused for any reason you should refer the matter to your manager. They will endeavour to ensure that you have every opportunity to take your holidays at the time you request them, but they will need to balance your requests with the needs of the department.</p>
+    <p>We may require you to take (or not to take) holiday on particular dates, including when the business is closed, particularly busy, or during your notice period.</p>
+    <h2>4. Sickness during Periods of Holiday</h2>
+    <p>If you are sick or injured during a holiday period and would have been incapable of work, you may choose to treat the period of incapacity as sick leave and reclaim the affected days of holiday.</p>
+    <p>Employees already on sick leave before a pre-arranged period of holiday may choose to cancel any days of holiday that coincide with the period of incapacity and treat them as sick leave.</p>
+    <p>Company sick pay will only be paid for such days if you comply with our Sickness Absence Policy, including notifying your manager immediately of your incapacity and obtaining medical evidence, even if you are abroad.</p>
+    <p>Dishonest claims or other abuse of this policy will be treated as misconduct under our disciplinary procedure.</p>
+    <h2>5. Long-term Sickness Absence and Holiday Entitlement</h2>
+    <p>Holiday entitlement continues to accrue during periods of sick leave.</p>
+    <p>If you are on a period of sick leave which spans two years, or if you return to work after sick leave so close to the end of the holiday year that you cannot reasonably take your remaining holiday, you may carry over unused holiday to the following leave year.</p>
+    <p>Carry over under this rule is limited to the four-week minimum holiday entitlement under EU law (which includes bank holidays), less any leave taken during the holiday year that has just ended. If you have taken four weeks' holiday by the end of the holiday year, you will not be allowed to carry anything over under this rule. If you have taken less than four weeks, the remainder may be carried over under this rule. For example, a full-time employee who has taken two weeks' holiday plus two bank holidays before starting long-term sick leave can only carry over one week and three days. This limit does not affect your right to carry over holiday under paragraph 2.</p>
+    <p>Any holiday that is carried over under this rule but is not taken within 18 months of the end of the holiday year in which it accrued will be lost.</p>
+    <p>Alternatively, you can choose to take your paid holiday during your sick leave, in which case you will be paid at your normal rate.</p>
+    <h2>6. Family Leave and Holiday Entitlement</h2>
+    <p>Holiday entitlement continues to accrue during periods of maternity, paternity, and (adoption, parental or shared parental leave) (referred to collectively in this policy as family leave).</p>
+    <p>If you are planning a period of family leave that is likely to last beyond the end of the holiday year, you should discuss your holiday plans with your manager in good time before starting your family leave. Any holiday entitlement for the year that cannot reasonably be taken before starting your family leave can be carried over to the next holiday year.</p>
+    <p>For the avoidance of doubt this covers your full holiday entitlement.</p>
+    <p>Any holiday carried over should be taken immediately before returning to work or within three months of returning to work after the family leave.</p>
+    <h2>7. Arrangements on Termination of Employment</h2>
+    <p>On termination of employment, you may be required to use any remaining holiday entitlement during your notice period. Alternatively, you will be paid in lieu of any accrued but untaken holiday entitlement for the current holiday year to date, plus any holiday permitted to be carried over from previous years under this policy or as required by law. You are entitled to be paid at a rate of 1/260th of your (full-time equivalent) basic salary for each day of untaken entitlement.</p>
+    <p>If your normal remuneration in the twelve weeks prior to the date on which your employment terminates also includes variable pay such as overtime or bonus these elements will be factored into the calculation of your final holiday payment. For each day of untaken holiday entitlement, you are entitled to be paid at a rate of 1/60th of your normal remuneration in the last 12 weeks of your employment.</p>
+    <h2>8. Time Off</h2>
+    <p>Circumstances may arise where you need time off for medical/dental appointments, or for other reasons.</p>
+    <p>Where possible, such appointments should be made outside normal working hours. Where this is not possible, depending on the length of time off needed, you may at our discretion be able to make up the time. To minimise the impact, you should try and get the first/last appointment of the day.</p>
+  </div>
+</div>
+</div>
+
+<!-- S9: Disciplinary -->
+<div class="view" id="view-s9">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 9</div>
+    <h1>Disciplinary and Capability Procedures Policy</h1>
+  </div>
+  <div class="policy-content">
+    <div class="info-box">This policy does not form part of your terms and conditions of employment and is not intended to have contractual effect.</div>
+    <h2>Policy Statement</h2>
+    <p>It is our policy to ensure that any disciplinary matter is dealt with fairly and in accordance with this procedure.</p>
+    <h2>1. Disciplinary Rules</h2>
+    <h3>i. Rules of Conduct</h3>
+    <p>While working for us you should always maintain professional and responsible standards of conduct. In particular you should:</p>
+    <ul>
+      <li>Observe the terms and conditions of your Contract of Employment, particularly regarding hours of work and confidentiality.</li>
+      <li>Observe all our policies and procedures included in this Employee Handbook or notified to you from time to time.</li>
+      <li>Take reasonable care in respect of the health and safety of colleagues and third parties.</li>
+      <li>Comply with all reasonable instructions given by managers; and</li>
+      <li>Act always in good faith and in the best interests of our business and employees.</li>
+    </ul>
+    <p>Failure to maintain satisfactory standards of conduct may result in action being taken under this procedure.</p>
+    <h3>ii. Misconduct</h3>
+    <p>The following are examples of matters that will normally be regarded as misconduct and will be dealt with under this procedure (this list is intended as a guide and is not exhaustive):</p>
+    <ul>
+      <li>Minor breaches of our policies (for example, sickness absence, health and safety etc.).</li>
+      <li>Minor breaches of your Contract of Employment.</li>
+      <li>Damage to, or unauthorised use of, our property.</li>
+      <li>Poor timekeeping.</li>
+      <li>Unsatisfactory standards or output of work.</li>
+      <li>Unauthorised absence from work.</li>
+      <li>Unprofessional workplace attitude and behaviour.</li>
+      <li>Excessive use of our telephones for personal use.</li>
+      <li>Excessive personal email or internet usage.</li>
+      <li>Obscene language or other offensive behaviour.</li>
+      <li>Negligence in the performance of your duties.</li>
+      <li>Smoking in no-smoking areas or in company vehicles.</li>
+    </ul>
+    <h3>iii. Gross Misconduct</h3>
+    <p>Gross misconduct is a serious breach of contract and includes misconduct which, in our opinion, is likely to prejudice our business or reputation or irreparably damage the working relationship and trust between us. Gross misconduct will be dealt with under this procedure and will normally result in summary dismissal (i.e. dismissal without notice or payment in lieu of notice) if proven.</p>
+    <p>The following are examples of issues, which might constitute gross misconduct. These are illustrative only and do not constitute an exhaustive list.</p>
+    <ul>
+      <li>A serious or wilful breach of our rules, regulations and policies.</li>
+      <li>Failure to meet expected standards of work or behaviour amounting to serious neglect of duty.</li>
+      <li>Gross negligence or dangerous behaviour, which causes or might cause unacceptable loss, damage or injury.</li>
+      <li>Grossly indecent or immoral behaviour.</li>
+      <li>Actual or threatened violent behaviour (e.g. fighting or physical assault) or behaviour which provokes violence.</li>
+      <li>Deliberate falsification or forgery or other dishonesty in respect of any records (e.g. sickness self-certification form, fabrication of expense claims etc.) relating to you or any fellow employee.</li>
+      <li>Theft or misappropriation of money or property whether belonging to The Company, another employee or a third party.</li>
+      <li>Gross insubordination or repeated or serious failure or refusal to obey legitimate instructions given by any members of management.</li>
+      <li>Any breach of a legal statute, which has a direct effect on your ability to undertake your stated duties and/or on the desired characteristics of your position.</li>
+      <li>Deliberate and serious damage to The Company premises or property.</li>
+      <li>Bringing The Company into serious disrepute.</li>
+      <li>Repeated absences from duty without authorisation.</li>
+      <li>Any breach of trust or unauthorised disclosure of information relating to the companies' affairs to other Companies or individuals.</li>
+      <li>Driving on company business without an appropriate licence and/or the appropriate insurance.</li>
+      <li>Discrimination or harassment or other breach of our Equality, Inclusion and Diversity Policy.</li>
+      <li>Breaches of our Anti-Corruption and Bribery or Gifts &amp; Hospitality policies.</li>
+      <li>Unauthorised use, processing or disclosure of personal data contrary to our Data Protection Policy.</li>
+      <li>Failure to inform your manager or a Director of any criminal charges/convictions or police cautions that in our opinion may affect our reputation or otherwise affects your suitability to continue to work for us.</li>
+    </ul>
+    <h3>iv. Disciplinary Procedure</h3>
+    <p>The aim of this procedure is to provide a framework within which managers can work with employees to maintain satisfactory standards of conduct and to encourage improvement where necessary.</p>
+    <p>It is our policy to ensure that any disciplinary matter is dealt with fairly and that steps are taken to establish the facts and to give employees the opportunity to respond before taking formal action.</p>
+    <p>This procedure will be used to deal with misconduct and will not apply to cases involving genuine sickness absence, proposed redundancies or poor performance. In those cases, reference should be made to the appropriate policy or procedure.</p>
+    <h3>v. Minor Conduct Issues</h3>
+    <p>Minor conduct issues can often be resolved informally between the employee and their manager. There may be occasions when it is appropriate for managers to raise concerns about an employee's conduct as part of the normal management procedure. This provides an opportunity for the standard of conduct expected of the employee to be explained to him or her without the need to follow the formal disciplinary procedure.</p>
+    <p>Such discussions will be held in private and without undue delay whenever there is cause for concern. Where appropriate, a note of the informal discussion may be placed on your personnel file but will be disregarded for the purposes of any future disciplinary hearings. In some cases, management guidance may be issued, which will not form part of your disciplinary records.</p>
+    <p>Where discussion in the normal course of management does not bring about any required change or improvement, the employee will be advised that the next step may be referral to the formal disciplinary procedure.</p>
+    <h3>vi. Behaviour outside Working Hours</h3>
+    <p>Our business demands employees of the highest integrity, and we expect employees to maintain high standards outside working hours. Any outside activities, which could reasonably be regarded as detrimental to the reputation of The Company, may lead to dismissal.</p>
+    <p>As a condition of employment, employees hereby agree to notify us of any criminal conviction, plea of guilty or not guilty or Police caution for an offence occurring whilst employed immediately.</p>
+    <p>Where the offence is work related, the employee will be subject to disciplinary action. In the absence of any mitigating circumstances, the offence may be treated as gross misconduct.</p>
+    <h3>vii. Confidentiality</h3>
+    <p>Our aim is to deal with disciplinary matters sensitively and with due respect for the privacy of any individuals involved. All employees must treat as confidential any information communicated to them in connection with an investigation or disciplinary matter.</p>
+    <p>You, and anyone accompanying you (including witnesses), must not make electronic recordings of any meetings or hearing conducted under this procedure. You will normally be told the names of any witnesses whose evidence is relevant to disciplinary proceedings against you, unless we believe that a witness's identity should remain confidential.</p>
+    <h3>viii. Investigations</h3>
+    <p>The purpose of an investigation is for us to establish a fair and balanced view of the facts relating to any disciplinary allegations against you, before deciding whether to proceed with a disciplinary hearing. The amount of investigation required will depend on the nature of the allegations and will vary from case to case.</p>
+    <p>It may involve interviewing and taking statements from you and any witnesses, and/or reviewing relevant documents. Investigative interviews are solely for the purpose of fact-finding and no decision or disciplinary action will be taken until after a disciplinary hearing has been held.</p>
+    <p>You do not normally have the right to be accompanied at an investigative interview. However, we may allow you to bring a companion if it helps you to overcome any disability.</p>
+    <p>You must co-operate fully and promptly in any investigation. This will include informing us of the names of any relevant witnesses, disclosing any relevant documents to us and attending investigative interviews if required.</p>
+    <h3>ix. Criminal Allegations</h3>
+    <p>Where your conduct is the subject of a criminal investigation, charge or conviction we will investigate the facts before deciding whether to take formal disciplinary action.</p>
+    <p>We will not usually wait for the outcome of any prosecution before deciding what action, if any, to take.</p>
+    <p>Where you are unable or have been advised not to attend a disciplinary hearing or say anything about a pending criminal matter, we may have to take a decision based on the available evidence.</p>
+    <p>A criminal investigation, charge or conviction relating to conduct outside work may be treated as a disciplinary matter if we consider that it is relevant to your employment.</p>
+    <h3>x. Suspension</h3>
+    <p>In some circumstances we may need to suspend you from work. The suspension will be for no longer than is necessary to investigate the allegations and we will confirm the arrangements to you in writing. While suspended you should not visit our premises or contact any of our clients, customers, suppliers, contractors or employees, unless you have been authorised to do so by The Company.</p>
+    <p>Suspension of this kind is not a disciplinary penalty and does not imply that any decision has already been made about the allegations. You will continue to receive your full basic salary and benefits during the period of suspension.</p>
+    <h3>xi. Notification of a Hearing</h3>
+    <p>Following any investigation, if we consider there are grounds for disciplinary action, you will be required to attend a disciplinary hearing. We will inform you in writing of the allegations against you, the basis for those allegations, and what the likely range of consequences will be if we decide after the hearing the allegations are true. We will also include the following where appropriate:</p>
+    <ul>
+      <li>A summary of relevant information gathered during the investigation.</li>
+      <li>A copy of any relevant documents which will be used at the disciplinary hearing; and</li>
+      <li>A copy of any relevant witness statements, except where a witness's identity is to be kept confidential, in which case we will give you as much information as possible while maintaining confidentiality.</li>
+    </ul>
+    <p>We will give you written notice of the date, time and place of the disciplinary hearing. The hearing will be held as soon as reasonably practicable, but you will be given a reasonable amount of time to prepare your case based on the information we have given you.</p>
+    <h3>xii. The right to be accompanied</h3>
+    <p>You may bring a companion to any disciplinary hearing or appeal hearing under this procedure. The companion may be either a trade union representative or a colleague. You must let us know who your chosen companion is, in good time before the hearing.</p>
+    <p>A companion is allowed reasonable time off from duties without loss of pay but no-one is obliged to act as a companion if they do not wish to do so.</p>
+    <p>If your companion is unavailable at the time a meeting is scheduled and will not be available for more than five working days afterwards, we may ask you to choose someone else.</p>
+    <p>We may, at our discretion, allow you to bring a companion who is not a colleague or union representative (for example, a member of your family) if this will help overcome a disability.</p>
+    <h3>xiii. Procedure at Disciplinary Hearings</h3>
+    <p>If you or your companion cannot attend the hearing, you should inform us immediately and we will arrange an alternative time. You must make every effort to attend the hearing, and failure to attend without good reason may be treated as misconduct in itself. If you fail to attend without good reason or are persistently unable to do so (for example for health reasons), we may have to take a decision based on the available evidence.</p>
+    <p>You will be informed of who will be chairing the hearing in advance. The investigating officer and a notetaker may also be present. You may bring a companion with you to the disciplinary hearing.</p>
+    <p>At the disciplinary hearing we will go through the allegations against you and the evidence that has been gathered. You will be able to respond and present any evidence of your own. Your companion may make representations to us and ask questions, but should not answer questions on your behalf. You may confer privately with your companion at any time during the hearing.</p>
+    <p>You may ask relevant witnesses to appear at the hearing, provided you give us sufficient advance notice to arrange their attendance. You will be given the opportunity to respond to any information given by a witness.</p>
+    <p>We may adjourn the disciplinary hearing if we need to carry out any further investigations such as reinterviewing witnesses in the light of any new points you have raised at the hearing. You will be given a reasonable opportunity to consider any new information obtained before the hearing is reconvened.</p>
+    <p>We will inform you in writing of our decision and our reasons for it without unreasonable delay following the hearing.</p>
+    <h3>xiv. Disciplinary Penalties</h3>
+    <p>The usual penalties for misconduct are set out below. No penalty should be imposed without a hearing.</p>
+    <p>We aim to treat all employees fairly and consistently, and a penalty imposed on another employee for similar misconduct will usually be considered but should not be treated as a precedent. Each case will be assessed on its own merits.</p>
+    <p>You will not normally be dismissed for a first act of misconduct, unless we decide it amounts to gross misconduct, or you have less than 2 years' continuous service with The Company.</p>
+    <h4>Stage One — First Written Warning</h4>
+    <p>A first written warning will usually be appropriate for a first act of misconduct where there are no other active warnings on your disciplinary record.</p>
+    <h4>Stage Two — Final Written Warning</h4>
+    <p>A final written warning will usually be appropriate for misconduct where there is already an active written warning on your record; or misconduct that we consider sufficiently serious to warrant a final written warning even though there are no other active warnings on your record.</p>
+    <h4>Stage Three — Dismissal</h4>
+    <p>Dismissal will usually only be appropriate for any misconduct during your probationary period or during the first two years of continuous service; further misconduct where there is an active final written warning on your record; an act of serious misconduct sufficiently serious to warrant dismissal with notice or payment in lieu of notice even though there are no other active warnings on your record; or any gross misconduct regardless of whether there are active warnings on your record. Gross misconduct will usually result in immediate dismissal without notice or payment in lieu of notice (summary dismissal).</p>
+    <h4>Alternatives to dismissal</h4>
+    <p>In some cases, we may at our discretion consider alternatives to dismissal. This will usually be accompanied by a final written warning. Examples include, but are not limited to: demotion; transfer to another job or department; a period of suspension without pay; reduction in pay; loss of future pay increment or bonus.</p>
+    <h4>Effect of a warning</h4>
+    <p>Written warnings will set out the nature of the misconduct, the change in behaviour required, the period for which the warning will remain active, and the likely consequences of further misconduct in that active period.</p>
+    <p>A first and final written warning will usually remain active for 12 months. In exceptional cases, we may extend the active period.</p>
+    <p>After the active period, the warning will remain permanently on your personnel file but will be disregarded in deciding the outcome of future disciplinary proceedings.</p>
+    <h3>xv. Appeals</h3>
+    <p>If you feel that disciplinary action taken against you is wrong or unjust you should appeal in writing, stating your full grounds of appeal, to your Managing Principal within 5 working days of the date on which you were informed of the decision.</p>
+    <p>If you are appealing against dismissal, the date on which dismissal takes effect will not be delayed pending the outcome of the appeal. However, if your appeal is successful, you will be reinstated with no loss of continuity or pay.</p>
+    <p>If you raise any new matters in your appeal, we may need to carry out further investigation.</p>
+    <p>If any new information comes to light, we will provide you with a summary including, where appropriate, copies of additional relevant documents and witness statements. You will have a reasonable opportunity to consider this information before the hearing, and you or your companion may comment on any new evidence arising during the appeal before any decision is taken.</p>
+    <p>We will give you written notice of the date, time and place of the appeal hearing. You will be given a reasonable amount of time to prepare for the hearing.</p>
+    <p>The appeal may be a complete re-hearing of the matter, or it may be a review of the fairness of the original decision in the light of the procedure that was followed and any new information that may have come to light. This will be at our discretion depending on the circumstances of your case. In any event the appeal will be dealt with as impartially as possible.</p>
+    <p>Where possible, the appeal will be conducted impartially by a Director who has not been previously involved in the case.</p>
+    <p>You may bring a companion with you to the appeal hearing.</p>
+    <p>We may adjourn the appeal hearing if we need to carry out any further investigations in the light of any new points you have raised at the hearing. You will be given a reasonable opportunity to consider any new information obtained before the hearing is reconvened.</p>
+    <p>Following the appeal hearing we may: confirm the original decision; revoke the original decision; or substitute a different penalty.</p>
+    <p>We will inform you in writing of our final decision as soon as reasonably possible. The appeal decision is the final stage of our Disciplinary Procedure.</p>
+
+    <h2>Capability</h2>
+    <div class="info-box">This policy does not form part of your terms and conditions of employment and is not intended to have contractual effect.</div>
+    <h3>Policy Statement</h3>
+    <p>It is our policy to ensure that concerns over performance and misconduct are dealt with fairly, steps are taken to establish the facts and employees are given the opportunity to respond at a hearing before any formal action is taken.</p>
+    <p>Problems of performance may be specific or of a broader nature; they may be of recent concern or span a longer period of time. These considerations, together with the seriousness of the difficulty, will have a direct bearing on what action we will consider and take and the timetable for this.</p>
+    <h3>Who is covered by the Policy?</h3>
+    <p>This procedure applies to all employees regardless of length of service. It does not apply to agency workers or self-employed contractors.</p>
+    <p>This policy is used to deal with poor performance. It does not apply to cases involving genuine sickness absence, proposed redundancies or misconduct. In those cases, reference should be made to the appropriate policy or procedure in the Employee Handbook.</p>
+    <h3>Identifying Performance Issues</h3>
+    <p>In the first instance, performance issues should normally be dealt with informally between you and your manager as part of day-to-day management. Where appropriate, a note of any such informal discussions may be placed on your personnel file but will be ignored for the purposes of any future capability hearings. The formal procedure should be used for more serious cases, or in any case where an earlier informal discussion has not resulted in a satisfactory improvement. Informal discussions may help clarify the required standards, identify areas of concern, establish the likely causes of poor performance and identify any training needs, and set targets for improvement and a timescale for review.</p>
+    <p>Employees will not normally be dismissed for performance reasons without previous warnings.</p>
+    <p>However, in serious cases of gross negligence, or in any case involving an employee who has not yet completed their probationary period, dismissal without previous warnings may be appropriate.</p>
+
+    <h4>Time Scales for the expiry of Warnings</h4>
+    <p>Warnings issued to employees shall be deemed to have expired after the following periods of time.</p>
+    <ul>
+      <li>Verbal Warnings: 6 months</li>
+      <li>First Written Warnings: 12 months</li>
+      <li>Final Written Warnings: 18 months (or as agreed and recorded at the hearing)</li>
+    </ul>
+    <p>These timescales remain provided that during that period, no further warnings have been issued in respect of the employee's conduct.</p>
+  </div>
+</div>
+</div>
+
+<!-- S10: Grievance -->
+<div class="view" id="view-s10">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 10</div>
+    <h1>Grievance Procedures Policy</h1>
+  </div>
+  <div class="policy-content">
+    <p>This procedure applies to all employees regardless of length of service.</p>
+    <p>It does not form part of any employee's Contract of Employment, and we reserve our right to amend or vary the procedure at any time and we may depart from it depending on the circumstances of any case.</p>
+    <p>At some time or other employees may have personal or work-related problems and employees are encouraged to speak to their manager in the first instance for advice on any personal or private issues they are facing.</p>
+    <p>Where your concerns relate to problems you are experiencing at work, this procedure may be followed.</p>
+    <p>We encourage all employees to settle complaints either informally or by informal or formal mediation.</p>
+    <p>Mediation is voluntary and will only take place with the agreement of both parties. Where mediation is agreed once the formal grievance procedure has been started, the formal procedure will be adjourned whilst the mediation take place. If no mutually acceptable solution is reached through mediation, the procedure will be reconvened at the point of adjournment.</p>
+    <p>Most grievances can be resolved quickly and informally through discussion with your manager or a Director. If this does not resolve the problem, you should initiate the formal procedure below reasonably promptly.</p>
+    <ul>
+      <li>You should put your formal grievance in writing and submit it to your manager. If your grievance concerns your manager, you may submit it to a Director.</li>
+      <li>Your written grievance should set out the nature of the complaint, including any relevant facts, dates, and names of individuals involved so that we can investigate it.</li>
+      <li>We will arrange a grievance meeting which you should make every effort to attend. You may bring a companion to the grievance meeting if you make a reasonable request in advance and tell us the name of your chosen companion. The companion may be either a trade union representative or a colleague, who will be allowed reasonable paid time off from duties to act as your companion.</li>
+      <li>If you or your companion cannot attend at the time specified you should let us know as soon as possible and we will try, within reason, to agree an alternative time.</li>
+      <li>We may adjourn the meeting if we need to carry out further investigations, after which the meeting will usually be reconvened.</li>
+      <li>We will write to you following the last grievance meeting, to confirm our decision and notify you of any further action that we intend to take to resolve the grievance. We will also advise you of your right of appeal.</li>
+      <li>If the grievance has not been resolved to your satisfaction you may appeal in writing to your Managing Principal, stating your full grounds of appeal, within 5 working days of the date on which the decision was sent or given to you.</li>
+      <li>We will hold an appeal meeting which will be dealt with impartially by a Director who has not previously been involved in the case. You will have a right to be accompanied by a work colleague or a trade union representative at the appeal meeting.</li>
+      <li>We will confirm our final decision in writing as soon as practicable and without unreasonable delay. The appeal decision is the final stage of the grievance procedure and there is no further right of appeal.</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- S11: Sickness -->
+<div class="view" id="view-s11">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 11</div>
+    <h1>Sickness Absence Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. About this Policy</h2>
+    <p>This policy sets out our arrangements for sick pay and for reporting and managing sickness absence.</p>
+    <p>Abuse of sickness absence, including failing to report absence will be treated as misconduct under The Company's Disciplinary Procedure. Falsely claiming sick pay will be treated as gross misconduct under our Disciplinary Procedure.</p>
+    <h2>2. Reporting when you are sick</h2>
+    <p>The Company values good attendance at work and is committed to improving the general wellbeing of its employees to achieve this. Although we aim to secure regular attendance, we do not expect employees to attend when they are unwell.</p>
+    <p>Your manager should be notified as early as possible if absence from work is anticipated for hospitalisation and other medical treatment.</p>
+    <p>If you are unable to attend work due to sickness or injury, your manager must be notified by telephone before your normal start time or as soon thereafter as possible on the first day of absence, if possible, indicating a date of return. Notification should be made by you personally unless impossible due to the nature of the illness where you should arrange for someone else to call on your behalf. Text messages are an acceptable method of notification. The notification procedures should be followed on each day of absence unless you are covered by a medical certificate.</p>
+    <p>During prolonged periods of absence, your manager should be kept informed of progress and an expected date of return. Your manager should be notified as early as possible if absence from work is anticipated for hospitalisation and other medical treatment.</p>
+    <p>If your incapacity extends to more than seven calendar days, you are required to notify us of your continued incapacity once a week thereafter, unless otherwise agreed.</p>
+    <p>Any employee who has been absent due to sickness and is found not to have been genuinely ill will be subject to disciplinary action, which could include dismissal.</p>
+    <h2>3. Sickness Payments</h2>
+    <p>Payment of Occupational Sick Pay will be made on a sliding scale depending on length of service and sickness period. From your first day of absence, you will be required to complete a self-certification form available through your manager on your return, if greater than 7 days you will require a statement of Fitness for Work from your G.P.</p>
+    <p>If you cannot attend work because you are sick or injured you should telephone your manager as early as possible, and no later than 10 am. You should state the reason for your absence and how long you think your absence will continue. Note that texts or outside working hours emails / voicemails are not acceptable as your manager may need to ask you operational questions.</p>
+    <h2>4. Evidence of Incapacity</h2>
+    <p>You must complete a self-certification form for sickness absence of up to seven calendar days.</p>
+    <p>For absence of more than a week you must obtain a certificate from your doctor stating that you are not fit for work, giving the reason. You must also complete a self-certification form to cover the first seven days. If absence continues beyond the expiry of a certificate, a further certificate must be provided.</p>
+    <p>If your doctor provides a certificate stating that you "may be fit for work" you must inform your manager immediately. We will hold a discussion with you about how to facilitate your return to work, taking account of your doctor's advice. If appropriate measures cannot be taken; you will remain on sick leave, and we will set a date for review.</p>
+    <h2>5. Statutory Sick Pay</h2>
+    <p>You may be entitled to statutory sick pay (SSP) if you are absent for four or more consecutive days because of sickness or injury provided you meet the statutory qualifying conditions. SSP is treated like wages and is subject to normal deductions. The rate of SSP is set by the government in April each year.</p>
+    <p>Qualifying days are the only days for which you are entitled to SSP. These days are normally your working days unless otherwise notified to you. The first three qualifying days of absence are waiting days for which SSP is not payable, It commences on the fourth day of absence and may be payable for up to 28 weeks. Where a second or subsequent period of incapacity (of four days or more) occurs within 56 days of a previous period of incapacity, waiting days are not served again.</p>
+    <p>Any contractual sickness/injury payments are shown in your individual Contract of Employment.</p>
+    <h2>6. Company Sick Pay</h2>
+    <p>After successfully completing your probationary period, you will qualify for company sick pay provided you comply with this policy and any further requirements set out in your contract. Company sick pay is inclusive of any SSP. No company sick pay will be paid for the first three consecutive days of absence. For employees of less than one year's service the entitlement will be pro rata.</p>
+    <p>Company sick pay is equal to your full basic salary for up to ten days absence (pro-rata for part-time employees). When this entitlement is exhausted, you will not qualify for company sick pay until you have returned to work and worked a total of 12 weeks.</p>
+    <p>Company sick pay is paid at our discretion, and we may amend or withdraw the scheme at any time.</p>
+    <h2>7. Fit for Work service (FFW)</h2>
+    <p>FFW is a government-funded occupational health assessment service. The service is intended to assist employees return to work, using a return-to-work plan where appropriate. If you want to know more about FFW please speak to your manager.</p>
+    <p>Once you have been absent for four weeks, either we or your doctor may suggest referring you to FFW. Your doctor may do this before you have been absent for four weeks if they think it would be beneficial for you.</p>
+    <p>If your doctor refers you to FFW please let your manager know, unless you would prefer not to tell us. If your case manager at FFW wishes to speak to us, please ask them to contact your manager.</p>
+    <h2>8. Return-to-work Interviews</h2>
+    <p>After a period of sick leave your manager may hold a return-to-work interview with you. The purposes may include:</p>
+    <ul>
+      <li>ensuring you are fit for work and agreeing any actions necessary to facilitate your return.</li>
+      <li>confirming you have submitted the necessary certificates.</li>
+      <li>updating you on anything that may have happened during your absence.</li>
+      <li>raising any other concerns regarding your absence record or your return to work.</li>
+    </ul>
+    <h2>9. Managing Long-term or Persistent Absence</h2>
+    <p>The following paragraphs set out our procedure for dealing with long-term absence or where your level or frequency of short-term absence has given us cause for concern. The purpose of the procedure is to investigate and discuss the reasons for your absence, whether it is likely to continue or recur, and whether there are any measures that could improve your health and/or attendance. We may decide that medical evidence, or further medical evidence, is required before deciding on a course of action.</p>
+    <p>We will notify you in writing of the time, date and place of any meeting, and why it is being held. We will usually give you a week's notice of the meeting.</p>
+    <p>Meetings will be conducted by your manager. You may bring a companion to any meeting or appeal meeting under this procedure. Your companion may be either a trade union representative or a colleague, who will be allowed reasonable paid time off from duties to act as your companion.</p>
+    <p>If you or your companion cannot attend at the time specified you should let us know as soon as possible and we will try, within reason, to agree an alternative time.</p>
+    <p>If you have a disability, we will consider whether reasonable adjustments may need to be made to the sickness absence meetings procedure, or to your role or working arrangements.</p>
+    <h2>10. Medical Examinations</h2>
+    <p>We may ask you to consent to a medical examination by a doctor or occupational health professional or other specialist nominated by us (at our expense).</p>
+    <p>You will be asked to agree that any medical report produced may be disclosed to us and that we may discuss the contents of the report with the specialist and with our advisers. All medical reports will be kept confidential and held in accordance with our Data Protection Policy.</p>
+    <h2>14. Appeals</h2>
+    <p>You may appeal against the outcome of any stage of this procedure. If you wish to appeal you should set out your appeal in writing to a Director, stating your grounds of appeal, within one week of the date on which the decision was sent or given to you.</p>
+    <p>If you are appealing against a decision to dismiss you, we will hold an appeal meeting, normally within two weeks of receiving the appeal. This will be dealt with impartially and, where possible, by a Director who has not previously been involved in the case.</p>
+    <p>We will confirm our final decision in writing, usually within one week of the appeal hearing. There is no further right of appeal.</p>
+    <p>The date that any dismissal takes effect will not be delayed pending the outcome of an appeal. However, if the appeal is successful, the decision to dismiss will be revoked with no loss of continuity or pay.</p>
+  </div>
+</div>
+</div>
+
+<!-- S12: Maternity -->
+<div class="view" id="view-s12">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 12</div>
+    <h1>Maternity Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>Introduction</h2>
+    <p>All pregnant employees are entitled to a total of 52 weeks' maternity leave, irrespective of their length of service. We have set out below all your rights and obligations should you become pregnant. We would ask that you notify us as soon as possible of your pregnancy so that we can ensure you are fully aware of all your entitlements and obligations and also so that we can take any necessary steps to ensure the health and safety of both you and your unborn child whilst you are at work.</p>
+    <h2>Ante-Natal Care</h2>
+    <p>You are entitled to paid time off during normal working hours to receive ante-natal care. Ante-natal care can include not only medical examinations, but also relaxation and parent-craft classes.</p>
+    <p>Other than for the first appointment, you must produce both a certificate confirming that you are pregnant and an appointment card (or similar document) from a registered medical practitioner, or a registered midwife, in the case of medical examinations or relaxation classes, or from a registered health visitor in the case of parent-craft classes, showing that an appointment has been made.</p>
+    <h2>Maternity Leave</h2>
+    <p>You are entitled to the following maternity leave; 52 weeks in total, broken down as follows:</p>
+    <p>26 weeks' Ordinary Maternity Leave. You are not permitted to work for 2 weeks' immediately after your baby is born, this is called Compulsory Maternity Leave.</p>
+    <p>Additional Maternity Leave that starts immediately after Ordinary Maternity Leave and continues for a further 26 weeks.</p>
+    <p>Maternity leave can commence at any time after the 11th week before the expected week of childbirth and may commence as late as the day after the birth of your baby. To take advantage of the right to maternity leave you must give us the proper notifications. These are outlined below under the heading 'Notification Requirements'.</p>
+    <h2>Notification Requirements</h2>
+    <p>We would urge you to notify us as soon as possible of your pregnancy to enable us to ensure that, where appropriate, any reasonable steps are taken to ensure the safety of yourself and your unborn child and that you are not subject to any unnecessary risks.</p>
+    <p>To qualify for maternity leave you must, no later than the end of the 15th week before the expected date of childbirth or, if that is not reasonably practicable, as soon as is reasonably practicable notify us, in writing of the following:</p>
+    <ul>
+      <li>your pregnancy.</li>
+      <li>expected week of childbirth (EWC); and</li>
+      <li>the date on which you intend your ordinary maternity leave period to start.</li>
+    </ul>
+    <p>In addition, you must supply us with a copy of your MATB1 form from a registered medical practitioner or registered midwife stating the EWC.</p>
+    <p>If you wish to vary the date on which you intend your OML to start, you must notify us of the new date at least 28 days before the new date or, if that is not reasonably practicable, as soon as is reasonably practicable.</p>
+    <h2>Keeping in Touch Days</h2>
+    <p>You may by mutual agreement, work for up to 10 days' during your maternity leave period (but not during the compulsory maternity leave period) without losing statutory payments for that week or ending your entitlement to leave.</p>
+    <p>For this purpose, any work carried out on any day, even just an hour's work, is deemed to constitute "a day's work". Any days' work done under this provision will not have the effect of extending the total duration of the maternity leave period.</p>
+    <p>Payment in respect of these 'keeping in touch' days will be agreed beforehand.</p>
+    <h2>Maternity Pay</h2>
+    <p>Dependent upon your length of service, you may be entitled to Statutory Maternity Pay. If you do not qualify for such a payment, you may, dependent upon your circumstances, be eligible to receive allowances from the appropriate government departments.</p>
+    <p>You will qualify for Statutory Maternity Pay (SMP) if you meet the following criteria:</p>
+    <ul>
+      <li>you have been continuously employed with us for at least 26 weeks' continuing into the 15th week before the week the baby is due.</li>
+      <li>your average weekly earnings are not less than the lower earnings limit relevant for National Insurance purposes.</li>
+      <li>you are still pregnant at the 11th week before the EWC or have given birth by that time.</li>
+      <li>you have complied with the relevant notification requirements, as detailed above.</li>
+    </ul>
+    <p>Payment will be made at the rate of 90% of your normal salary (or standard rate SMP whichever is the greater) for the first 6 weeks of leave and then up to 33 weeks at the Standard Rate SMP.</p>
+  </div>
+</div>
+</div>
+
+<!-- S13: Paternity -->
+<div class="view" id="view-s13">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 13</div>
+    <h1>Paternity Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>Introduction</h2>
+    <p>If your partner becomes pregnant you may be entitled to take time off work for various reasons, and this policy explains what your rights are.</p>
+    <h2>Ante-Natal Appointments</h2>
+    <p>Regardless of your length of service, you have the right to take time off to accompany your partner to ante natal appointments. An ante-natal appointment is one which has been made on the advice of a registered medical practitioner, nurse or midwife. Under this right, you are entitled to take time off to attend a maximum of 2 ante-natal appointments, to a maximum of 6.5 hours per appointment. This time is unpaid.</p>
+    <p>You must be the father of the child or the husband, civil partner or partner of the mother. The right applies whether the baby was conceived naturally or via donor insemination.</p>
+    <h2>Ordinary Paternity Leave</h2>
+    <p>You must have been continuously employed by us for a period of at least 26 weeks by the end of the 15th week before the expected week of the child's birth.</p>
+    <p>You must be the father of the child, or be married to, or the civil partner or "partner" of, the child's mother. "Partner" in relation to a child's mother means a person (whether of a different sex or the same sex) who lives with the mother, and the child in an enduring family relationship but is not a relative of the mother (a relative is defined as a parent, grandparent, sister, brother, aunt or uncle).</p>
+    <p>You must have, or expect to have, responsibility for the upbringing of the child.</p>
+    <p>Only one period of leave is available irrespective of whether more than one child is born as a result of the same pregnancy.</p>
+    <h2>Notification Requirements</h2>
+    <p>You are required to give us notice, in writing, of your intention to take paternity leave.</p>
+    <p>The notice must be given in on or before the 15th week before the expected week of the child's birth. In a case where it is not reasonably practicable for you to give notice in accordance with the above, it should be given as soon as is reasonably practicable.</p>
+    <p>The notice must specify the expected week of birth, whether you wish to take one or two weeks' leave, and when you want your leave to start.</p>
+    <p>You must also give us a signed declaration as to the purpose of the absence and that the eligibility conditions have been met.</p>
+    <h2>Commencement and Duration of Leave</h2>
+    <p>Leave may only be taken during the period beginning with the date of the child's birth and ending 56 days after that date or, in a case where the child is born before the first day of the expected week of birth, 56 days after that day.</p>
+    <p>Leave can start on any day of the week, and you can choose to take a block of either one week or two consecutive weeks. You cannot choose to take two separate single week blocks. During paternity leave you are entitled to the benefit of your normal terms and conditions of employment, except wages or salary, and you are bound by any obligations arising under those terms and conditions except in so far as they are inconsistent with the right to paternity leave. Most employees will be entitled to statutory paternity pay whilst on paternity leave.</p>
+    <h2>Shared parental leave</h2>
+    <p>This leave entitlement is designed to give parents more flexibility in how to share the care of their child in the first year following birth. If you are eligible, you can share up to 50 weeks leave, you and your partner can decide to be off work at the same time and/or take it in turns to have periods of leave to look after the child. To be eligible you must meet the following criteria:</p>
+    <ul>
+      <li>You (or your partner) must be entitled to maternity leave, or statutory maternity pay (or maternity allowance from the Government) and you must share the main responsibility for caring for the child with your partner.</li>
+      <li>Step 1 — Continuity test: if you are seeking to take shared parental leave, one parent must have worked for the same employer for at least 26 weeks at the end of the 15th week before the week in which the child is due and they should still be employed in the first week that shared parental leave is to be taken. The other parent must have worked for 26 weeks in the 66 weeks leading up to the due date and have earned above the maternity allowance threshold of £30 a week in 13 of the 66 weeks.</li>
+      <li>Step 2 — Individual eligibility for pay: To qualify for shared parental pay the parent must, as well as passing the Continuity test, also have earned an average salary of the National Insurance lower earnings limit or more for the eight weeks prior to the 15th week before the expected birth / adoption.</li>
+    </ul>
+    <p>If you would like more information on shared parental leave, please speak with your manager.</p>
+  </div>
+</div>
+</div>
+
+<!-- S14: Additional Leave -->
+<div class="view" id="view-s14">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 14</div>
+    <h1>Additional Leave Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. Compassionate Leave</h2>
+    <p>Compassionate leave is designed to help you cope with the death of a close relative, deal with necessary arrangements and attend their funeral. It may also be granted where a close relative is seriously or critically ill.</p>
+    <h2>2. Entitlement</h2>
+    <p>You are entitled to take paid compassionate leave of up to 10 days in any twelve month period in respect of immediate family only eg a spouse or partner, child, stepchild, parent, step-parent.</p>
+    <p>We may exercise our discretion to grant a period of paid or unpaid compassionate leave in respect of any other relative or close friend, depending on the circumstances of each case.</p>
+    <p>If you are still unable to return to work following an authorised period of compassionate leave you should contact your manager. It may be appropriate to take a period of annual leave, subject to your manager's approval, or we may at our discretion grant you further unpaid leave in those circumstances.</p>
+    <h2>3. Requesting Compassionate Leave</h2>
+    <p>We recognise that it may not always be possible to request compassionate leave in advance. However, where it is possible, you should make a request to your manager. You should tell them about the reasons for your request and the number of days leave you would like to take.</p>
+    <p>Where it is not possible to request leave in advance you should contact your manager as soon as possible to tell them the reason for your absence and the number of days you expect to be absent. Someone can do this on your behalf if necessary.</p>
+    <p>In exceptional circumstances we may have to refuse a request for compassionate leave and will give you a written explanation of the reasons. If you are dissatisfied with this decision you may appeal to a Director in writing within 10 days of receiving our written reasons or make a complaint under our Grievance Procedure.</p>
+    <h2>4. Unpaid Parental Leave</h2>
+    <p>As well as Shared Parental Leave, any eligible employee who has or expects to have responsibility for a child is entitled to take Unpaid Parental Leave to care for that child. This includes the child's registered father or anyone else who has or expects to have formal parental responsibility for the child. To be eligible to take Parental Leave, an employee must have been employed by The Company for at least one year.</p>
+    <p>Parental Leave consists of 18 weeks' unpaid leave for each child born, taken at any time up to the child's eighteenth birthday. Up to four weeks' Parental Leave can be taken in respect of each child, each year, in blocks of one week or more. Employees cannot take the leave in blocks of less than one week, unless the child is disabled. You must give your manager at least 21 days' notice of your intention to take Parental Leave.</p>
+    <p>Although the situation around pregnancy appears complex, it is normally quite straightforward to work out your entitlement. Therefore, as soon as you know you are pregnant, please let your manager know as soon as is practical. We will calculate your entitlement and the relevant dates for you.</p>
+    <h2>5. Time Off for Dependants</h2>
+    <p>You are legally entitled to take a reasonable amount of time off to deal with certain prescribed emergencies involving certain dependants. This leave is called Time Off for Dependants. Time Off for Dependants can be taken, for example, if a dependant falls ill or is injured, if care arrangements break down, or to arrange or attend a dependant's funeral. A dependant is your child (including adopted child), husband, wife or parent. It also includes someone who lives in your household, and someone who reasonably relies on you, such as an elderly relative. Any time taken off must be necessary and reasonable in the circumstances. Time Off for Dependants is not paid.</p>
+  </div>
+</div>
+</div>
+
+<!-- S15: Public Duties -->
+<div class="view" id="view-s15">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 15</div>
+    <h1>Time off for Public Duties Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. About this Policy</h2>
+    <p>We wish to enable employees to perform any public duties that they may be committed to undertake and so will give them time off to do so where it does not conflict with the operational needs of our business. We are not legally obliged to grant paid leave for these purposes. The circumstances in which we are prepared to do so are set out below.</p>
+    <h2>2. Jury Service</h2>
+    <p>You should tell your manager as soon as you are summoned for jury service and provide a copy of your summons if requested.</p>
+    <p>Depending on the demands of our business we may request that you apply to be excused from or defer your jury service.</p>
+    <p>We are not required by law to pay you while you are absent on jury service. You will be advised at court of the expenses and loss of earnings that you can claim. However, we will pay basic pay to employees on jury service less any amounts you can claim from the court for lost earnings for up to 10 working days. Time off beyond 10 working days may be paid at our discretion. You should not volunteer for jury service beyond 14 days without referral and permission from your manager.</p>
+    <h2>3. Voluntary Public Duties</h2>
+    <p>Employees are entitled to a reasonable amount of unpaid time off work to carry out certain public duties, including duties as a tribunal member, magistrate, local councillor, member of an NHS Trust, prison visitor, police station lay visitor or school governor.</p>
+    <p>If you are unsure whether a public service that you perform is covered by this policy you should speak to a Director.</p>
+    <p>As soon as you are aware that you will require time off for performance of a public service you should notify your manager in writing, providing full details of the time off that is being requested and the reasons for your request. In order that arrangements can be made to cover your duties in your absence you should make your request in good time.</p>
+    <p>Each request for time off will be considered on its merits taking account of all the circumstances, including how much time is reasonably required for the activity, how much time you have already taken, and how your absence will affect the business.</p>
+    <h2>4. Reserve Forces Duties</h2>
+    <p>We are aware that employees who are members of the Reserve Forces (the Territorial Army, Royal Navy Reserve, Royal Marines Reserve or Royal Auxiliary Air Force) may be called-up at any time to be deployed on full-time operations, and are expected to attend regular training.</p>
+    <p>We are under no obligation to offer leave (either paid or unpaid) for reservists to undertake training and you should use existing holiday entitlement to meet training commitments.</p>
+    <p>If we receive notice that you have been called-up for active service we may apply to an adjudication officer for the notice to be deferred or revoked if your absence would cause serious harm to our business (which could not be prevented by the grant of financial assistance).</p>
+    <p>Once your military service has ended you may submit a written application for reinstatement to your employment. This should be made by the third Monday following the end of your military service and you should notify us of the date on which you will be available to restart work.</p>
+    <p>If it is not reasonable and practicable to reinstate you into your former employment we will offer you the most favourable alternative on the most favourable terms and conditions which are reasonable and practicable.</p>
+  </div>
+</div>
+</div>
+
+<!-- S16: Termination -->
+<div class="view" id="view-s16">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 16</div>
+    <h1>Termination of Employment Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. Notice Periods</h2>
+    <p>Unless your employment is terminated by agreement, or specified otherwise in your principal statement of terms and conditions, you or The Company are required to give a period of notice in writing as follows:</p>
+    <ul>
+      <li>one week's notice during your probationary period.</li>
+      <li>Following successful completion of your probationary period you are required to give 4 weeks' notice (or more if stated within your Contract of Employment).</li>
+      <li>Following successful completion of your probationary period, The Company is required to give 4 weeks' written notice if you have been continuously employed for up to 4 years and thereafter one weeks written notice for each year of complete service up to a maximum of 12 weeks (or more if stated within your Contract of Employment).</li>
+    </ul>
+    <p>These periods of notice will apply if you are dismissed on grounds of inefficiency or if your dismissal is the result of disciplinary proceedings in circumstances where summary dismissal is not justified. Your employment may be terminated without notice where dismissal follows disciplinary proceedings.</p>
+    <h2>2. Working Notice</h2>
+    <p>In all cases The Company reserves the right to enforce your full notice period. Your full remaining annual leave entitlement should be taken during your notice period in agreement with your manager. Exceptionally, if this is not possible, your manager may agree to make a payment in lieu of this. If you leave any day other than the last working day of that month that month will not count for annual leave purposes.</p>
+    <p>If you resign and are in possession of company property (including computer files), you should make your manager aware of these and arrange how they will be handed back to The Company. You remain bound by the confidentiality arrangements outlined in your Contract of Employment during this period.</p>
+    <p>In exceptional circumstances, if deemed appropriate and as an alternative to working your notice, The Company reserves the right either to transfer you to other suitable duties during your notice period or to require you to accept payment in lieu of any entitlement to notice.</p>
+    <h2>3. Garden Leave</h2>
+    <p>If either you or The Company serves notice on the other to terminate your employment The Company may require you to take "garden leave" for all or part of the remaining period of your employment.</p>
+    <p>During any period of garden leave you will continue to receive your full salary and any other contractual benefits.</p>
+    <h2>4. Other Conditions on Leaving</h2>
+    <p>On leaving, The Company will deduct from any money due to you such sums as you may owe to The Company. These may include, but are not restricted to, any loans, relocation assistance, court orders and payment made for holidays taken in excess of entitlement.</p>
+    <p>If you leave without giving notice and without The Company's agreement, you are in breach of your contract and you may forfeit some or all any salary due to you.</p>
+    <p>Before leaving, you must hand over to your manager all articles belonging to The Company, including any documents, equipment and computer software used at home. Documents and software includes (but are not limited to) correspondence, diaries, address books, databases, files, reports, plans, records or any other medium for storing information. You should not retain any copies, drafts, reproductions, extracts or summaries of documents and software.</p>
+    <p>After you have left The Company, you must not solicit or seek to entice away any company employees for a period of 12 months after your employment has ceased, or use or divulge to any person or organisation any confidential information relating to the business of The Company.</p>
+    <h2>5. Terminating Employment without Giving Notice</h2>
+    <p>If you terminate your employment without giving or working the required period of notice, as indicated in your individual Contract of Employment, you will have an amount equal to any additional cost of covering your duties during the notice period not worked deducted from any termination pay due to you. This is an express written term of your Contract of Employment.</p>
+    <p>You will also forfeit any contractual accrued holiday pay due to you over and above your statutory holiday pay, if you fail to give or work the required period of notice.</p>
+    <h2>6. Retirement</h2>
+    <p>In line with current legislation The Company does not operate a compulsory retirement age for it's employees.</p>
+    <p>It is however our policy to have regular workplace /appraisal discussions with all our employees where they can discuss performance and any development needs, they may have, as well as their future aims and aspirations. Employees and their managers can also use this opportunity to discuss retirement planning should the employee wish to do so. If you have decided to retire, we would appreciate as much notice as possible, to ensure that all appropriate arrangements are made. However, you should give at least as much notice as you are required to give under your Contract of Employment. Employees are encouraged to consider their pension provision and take independent advice.</p>
+  </div>
+</div>
+</div>
+
+<!-- S17: Smoking -->
+<div class="view" id="view-s17">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 17</div>
+    <h1>Smoking &amp; Unlawful Drugs Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. About this Policy</h2>
+    <p>We are committed to protecting your health, safety and welfare and that of all those who work for us by providing a safe place of work and protecting all workers, service users, customers and visitors from exposure to smoke.</p>
+    <p>All our workplaces (including our vehicles) are smoke-free in accordance with the Health Act 2006 and associated regulations. All employees and visitors have the right to a smoke-free environment.</p>
+    <p>This policy does not form part of any employee's Contract of Employment, and it may be amended at any time.</p>
+    <p>If you wish to suggest improvements to the policy or experience particular difficulty complying with it you should discuss the situation with your manager or a Director.</p>
+    <h2>2. Where is smoking banned?</h2>
+    <p>Smoking is not permitted anywhere in our workplace. The ban applies to anything that can be smoked and includes, but is not limited to, cigarettes, electronic cigarettes, pipes (including water pipes such as shisha and hookah pipes), cigars and herbal cigarettes.</p>
+    <p>No-smoking signs are displayed at the entrances to our workplace.</p>
+    <p>Anyone using a company vehicle, whether as a driver or passenger, must ensure the vehicle remains smoke-free. Any company vehicles that are used primarily for private purposes are excluded from the smoking ban.</p>
+    <h2>3. Where is smoking permitted?</h2>
+    <p>You may only smoke outside during breaks. When smoking outside, you must dispose of cigarette butts and other litter appropriately.</p>
+    <p>Breaches of this policy by any employee will be dealt with under our Disciplinary Procedure and, in serious cases, may be treated as gross misconduct leading to summary dismissal.</p>
+    <p>Smoking in smoke-free premises or vehicles is also a criminal offence and may result in a fixed penalty fine and/or prosecution.</p>
+    <h2>4. Other Substances at Work</h2>
+    <p>Bringing any unlawful drugs to the workplace, and / or imbibing or using them is strictly prohibited both during worktime and during a period prior to work where the effects carry over to the workplace. Any such instances will be dealt with under the disciplinary procedures and constitutes gross misconduct. We reserve the right to apply to test for the use of unlawful drugs where we suspect that their use has taken place.</p>
+    <p>Being under the influence of unlawful drugs whilst at work constitutes Gross Misconduct.</p>
+  </div>
+</div>
+</div>
+
+<!-- S18: Health & Safety -->
+<div class="view" id="view-s18">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 18</div>
+    <h1>Health and Safety Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. Introduction</h2>
+    <p>The Company recognises and accepts its responsibility as an employer to maintain, so far as is reasonably practicable, the safety and health of its employees, and of other persons who may affected by its' activities.</p>
+    <p>You should make yourself familiar with our separate Health and Safety Policy and your own health and safety duties and responsibilities, as notified in that policy.</p>
+    <p>You must not take any action that could threaten the health or safety of yourself, other employees, clients or members of the public.</p>
+    <p>You should report all accidents and injuries at work, no matter how minor, to your manager, who will ensure that they are logged in the accident book.</p>
+    <p>You must ensure that you are aware of our fire and evacuation procedures and the action you should take in the event of such an emergency.</p>
+    <p>It is your duty as an employee not to put at risk either yourself or others by your acts or omissions. You should also ensure that you are familiar with The Company health and safety arrangements. Should you feel concern over any health and safety aspects of your work, this should be brought to the attention of your manager immediately.</p>
+    <h2>2. Fire Safety</h2>
+    <p>Employees should follow these steps to help prevent fires:</p>
+    <ul>
+      <li>Before you use any electrical appliances carry out a quick check to make sure that the cables, plugs etc. are not damaged.</li>
+      <li>Do not use any electrical equipment that shows signs of damage, even if you think it is only minor. Report any faults you find to your manager and find an alternative appliance.</li>
+      <li>Ensure that you place your rubbish in the proper waste bins. Do not overfill the bins and ensure that waste bins are accessible to the cleaners at the end of each day.</li>
+    </ul>
+    <p>Action to take when the fire alarm goes off:</p>
+    <ul>
+      <li>Immediately stop what you are doing and walk (do not run) to the nearest available safe fire exit. If your nearest exit/route is obstructed, choose another route. Make sure, that you are aware of the fire exits and routes in your area.</li>
+      <li>Follow the instructions of your designated Fire Warden.</li>
+      <li>Direction signs should indicate the route to your fire exit. These comprise a white arrow on a green background sometimes accompanied by the words 'FIRE EXIT' and also, a pictogram of a running man. The arrows indicate the direction of the nearest fire exit.</li>
+      <li>Do not use a lift to leave the building — always use designated stairs.</li>
+      <li>Make your way to the appropriate assembly point.</li>
+      <li>Once you are at the assembly point you should report to the Fire Warden, so that they can account for the people in their designated area.</li>
+      <li>Do not leave the designated assembly point, or attempt to re-enter the building, until you have been instructed to do so by the Fire Warden.</li>
+    </ul>
+    <p>Action to take if you discover a fire:</p>
+    <ul>
+      <li>RAISE THE ALARM! This can be achieved by breaking the glass on the call points or by shouting the instruction "Fire — call the fire brigade".</li>
+      <li>Raise the alarm even if your building is fitted with an automatic fire alarm system, which has not yet activated — you must not wait for it to do so of its own accord. The alarm must be raised for every occurrence of a fire, no matter how small it appears to be. This will ensure that people in the building have adequate notice to evacuate should it begin to spread quickly. In addition, modern furnishings may allow the fire to develop unnoticed, so time is of the essence if everyone is to get out safely.</li>
+      <li>Call the fire brigade at the earliest available, and safe, opportunity and do not attempt to tackle the fire unless you have been appropriately trained and can safely do so e.g. a small fire in a wastepaper basket. Unless you have been trained you could be putting yourself or somebody else at risk.</li>
+    </ul>
+    <h2>3. Personal Safety</h2>
+    <p>Generally, you should try to avoid working alone whenever this is possible. However, if you must work alone, then you need to develop an awareness of the risks and how to minimise them.</p>
+    <p>Prior to making an appointment with someone you do not know, obtain as much information as possible about the person you are meeting and arrange to meet the person in company premises. Always ring back the telephone number you have been given to confirm that it is legitimate. If a mobile number is given you should always ask for an alternative fixed line number.</p>
+    <p>If visiting, let your colleagues know where you are going, with whom and what time you are expecting to return. If you think that you are going to run over your original timescales, let your colleagues know.</p>
+  </div>
+</div>
+</div>
+
+<!-- S19: Data Protection -->
+<div class="view" id="view-s19">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 19</div>
+    <h1>Data Protection (Employee Data) Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. Data Protection</h2>
+    <p>The General Data Protection Regulation (GDPR) and the current Data Protection Act 2018 regulates our use of your personal data. As an employer it is our responsibility to ensure that the personal data, we process in relation to you is done so in accordance with the required principles. Any data held shall be processed fairly and lawfully and in accordance with the rights of data subjects.</p>
+    <h2>2. Confidentiality</h2>
+    <p>All information that:</p>
+    <ul>
+      <li>is or has been acquired by you during, or in the course of your employment, or has otherwise been acquired by you in confidence.</li>
+      <li>relates particularly to our business, or that of other persons or bodies with whom we have dealings of any sort; and</li>
+      <li>has not been made public by, or with our authority.</li>
+    </ul>
+    <p>shall be confidential, and (save in the course of our business or as required by law) you shall not at any time, whether before or after the termination of your employment, disclose such information to any person without the prior written consent of a Director of The Company.</p>
+    <p>You are to exercise reasonable care to keep safe all documentary or other material containing confidential information and shall at the time of termination of your employment with us, or at any other time upon demand, return to us any such material in your possession.</p>
+    <p>You must make yourself aware of our policies on data protection in relation to personal data and ensure compliance with them at all times.</p>
+  </div>
+</div>
+</div>
+
+<!-- S20: IT -->
+<div class="view" id="view-s20">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 20</div>
+    <h1>IT and Communications Systems Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. About this Policy</h2>
+    <p>Our IT and communications systems are intended to promote effective communication and working practices. This policy outlines the standards you must observe when using these systems, when we will monitor their use, and the action we will take if you breach these standards.</p>
+    <p>The Directors have overall responsibility for this policy, including keeping it under review.</p>
+    <p>Breach of this policy may be dealt with under our Disciplinary Procedure and, in serious cases, may be treated as gross misconduct leading to summary dismissal.</p>
+    <p>This policy does not form part of any employee's Contract of Employment, and we may amend it at any time.</p>
+    <h2>2. Equipment Security and Passwords</h2>
+    <p>You are responsible for the security of the equipment allocated to or used by you, and you must not allow it to be used by anyone other than in accordance with this policy. You should use passwords on all IT equipment, particularly items that you take out of the office. You should keep your passwords confidential and change them regularly.</p>
+    <p>You must only log on to our systems using your own username and password. You must not use another person's username and password or allow anyone else to log on using your username and password.</p>
+    <p>If you are away from your desk, you should log out or lock your computer. You must log out and shut down your computer at the end of each working day.</p>
+    <h2>3. Systems and Data Security</h2>
+    <p>You should not delete, destroy or modify existing systems, programs, information or data (except as authorised in the proper performance of your duties).</p>
+    <p>You must not download or install software from external sources without authorisation from a Director. Downloading unauthorised software may interfere with our systems and may introduce viruses or other malware.</p>
+    <p>You must not attach any device or equipment including mobile phones, tablet computers or USB storage devices to our systems without authorisation from a Director.</p>
+    <p>We monitor all emails passing through our system for viruses. You should exercise caution when opening unsolicited emails from unknown sources. If an email looks suspicious do not reply to it, open any attachments or click any links in it.</p>
+    <p>Inform a Director immediately if you suspect your computer may have a virus.</p>
+    <h2>4. Email</h2>
+    <p>Adopt a professional tone and observe appropriate etiquette when communicating with third parties by email. You should also include our standard email signature and disclaimer.</p>
+    <p>Remember that emails can be used in legal proceedings and that even deleted emails remain on the system and are capable of being retrieved.</p>
+    <p>You must not send abusive, obscene, discriminatory, racist, derogatory, defamatory, pornographic or otherwise inappropriate emails.</p>
+    <p>You should not send or forward private emails at work which you would not want a third party to read; send or forward chain mail, junk mail, cartoons, jokes or gossip; contribute to system congestion by sending trivial messages or unnecessarily copying or forwarding emails to others who do not have a real need to receive them; or send messages from another person's email address (unless authorised) or under an assumed name.</p>
+    <p>You should not forward client emails directly onto Insurers or Insurer emails directly onto Clients unless an Insurer has requested direct confirmation from a client on a specific matter or vice versa.</p>
+    <p>Do not use your own personal email account to send or receive email for the purposes of our business. Only use the email account we have provided for you.</p>
+    <h2>5. Using the Internet</h2>
+    <p>Internet access is provided primarily for business purposes. Occasional personal use may be permitted as set out in paragraph 6.</p>
+    <p>You should not access any web page or download any image or other file from the internet which could be regarded as illegal or offensive. Even web content that is legal in the UK may be offensive and fall within this prohibition. As a rule, if any person (whether intended to view the page or not) might be offended by the contents of a page, or if the fact that our software has accessed the page or file might be a source of embarrassment if made public, then viewing it will be a breach of this policy.</p>
+    <p>We may block or restrict access to some websites at our discretion.</p>
+    <h2>6. Personal use of our Systems</h2>
+    <p>We permit the incidental use of our systems to send personal email, browse the internet and make personal telephone calls subject to certain conditions. Personal use is a privilege and not a right. It must not be overused or abused. We may withdraw permission for it at any time or restrict access at our discretion.</p>
+    <p>Personal use must meet the following conditions: it must be minimal and take place exclusively outside of normal working hours (that is, during your lunch break, and before or after work); personal emails should be labelled "personal" in the subject header; it must not affect your work or interfere with the business; it must not commit us to any marginal costs; and it must comply with our policies including the Equal Opportunities Policy, Anti-harassment and Bullying Policy, Data Protection Policy and Disciplinary Procedure. By using The Company's systems as above you give your explicit consent to The Company monitoring the content of such personal web browsing or email use.</p>
+    <h2>7. Monitoring</h2>
+    <p>Our systems enable us to monitor telephone, email, voicemail, internet and other communications. For business reasons, and to carry out legal obligations in our role as an employer, your use of our systems including the telephone and computer systems (including any personal use) may be continually monitored by automated software or otherwise.</p>
+    <p>We reserve the right to retrieve the contents of email messages or check internet usage (including pages visited and searches made) as reasonably necessary in the interests of the business, including to monitor whether the use of the email system or the internet is legitimate and in accordance with this policy; to find lost messages or to retrieve messages lost due to computer failure; to assist in the investigation of alleged wrongdoing; or to comply with any legal obligation.</p>
+    <h2>8. Prohibited use of our Systems</h2>
+    <p>Misuse or excessive personal use of our telephone or email system or inappropriate internet use will be dealt with under our Disciplinary Procedure. Misuse of the internet can in some cases be a criminal offence.</p>
+    <p>Creating, viewing, accessing, transmitting or downloading any of the following material will amount to gross misconduct (this list is not exhaustive): pornographic material; offensive, obscene, or criminal material or material which is liable to cause embarrassment to us or to our clients; a false and defamatory statement about any person or organisation; material which is discriminatory, offensive, derogatory or may cause embarrassment to others; confidential information about us or any of our staff or clients (except as authorised in the proper performance of your duties); unauthorised software; any other statement which is likely to create any criminal or civil liability (for you or us); or music or video files or other material in breach of copyright.</p>
+    <h2>9. Mobile Phones</h2>
+    <p>Company mobile phones may be issued to employees based on the employees role.</p>
+    <p>Hands free equipment should be used whilst driving and phones should only be used when it is safe and legal to do so.</p>
+    <p>Company mobile phones can be used for personal calls. However, these should be kept to a minimum and should not include international, premium rate or any other higher rate calls.</p>
+    <h2>12. Confidentiality</h2>
+    <p>All information that is or has been acquired by you during, or in the course of your employment, or has otherwise been acquired by you in confidence; that relates particularly to our business, or that of other persons or bodies with whom we have dealings of any sort; and that has not been made public by, or with our authority shall be confidential, and (save in the course of our business or as required by law) you shall not at any time, whether before or after the termination of your employment, disclose such information to any person without the prior written consent of a Director of The Company.</p>
+    <p>You are to exercise reasonable care to keep safe all documentary or other material containing confidential information and shall at the time of termination of your employment with us, or at any other time upon demand, return to us any such material in your possession.</p>
+    <p>You must make yourself aware of our policies on data protection in relation to personal data and ensure compliance with them at all times.</p>
+    <h2>14. Company Property and Copyright</h2>
+    <p>All written material, whether held on paper, electronically or magnetically which was made or acquired by you during the course of your employment with us, is our property and, where appropriate, our copyright. At the time of termination of your employment with us, or at any other time upon demand, you shall return to us any such material in your possession.</p>
+  </div>
+</div>
+</div>
+
+<!-- S21: Social Media -->
+<div class="view" id="view-s21">
+<div class="policy-page">
+  <div class="back-btn" onclick="showHub()">← Back to handbook</div>
+  <div class="policy-header">
+    <div class="policy-schedule-tag">Schedule 21</div>
+    <h1>Social Media Policy</h1>
+  </div>
+  <div class="policy-content">
+    <h2>1. About this Policy</h2>
+    <p>This policy is in place to minimise the risks to our business through use of social media both during and outside of working hours.</p>
+    <p>This policy deals with the use of all forms of social media, including Facebook, LinkedIn, Twitter, Google+, Wikipedia, Instagram and all other social networking sites, internet postings and blogs. It applies to use of social media for business purposes as well as personal use that may affect our business in any way.</p>
+    <h2>2. Personal use of Social Media</h2>
+    <p>Occasional personal use of social media during working hours is permitted so long as it does not involve any prohibited content, does not interfere with your employment responsibilities or productivity and complies with this policy.</p>
+    <h3>i. Prohibited Use</h3>
+    <p>You must avoid making any social media communications that could damage our business interests or reputation, even indirectly.</p>
+    <p>You must not use social media to defame or disparage us, our staff or any third party; to harass, bully or unlawfully discriminate against staff or third parties; to make false or misleading statements; or to impersonate colleagues or third parties.</p>
+    <p>You must not express opinions on our behalf via social media, unless expressly authorised to do so by your manager. You may be required to undergo training in order to obtain such authorisation.</p>
+    <p>You must not post comments about sensitive business-related topics, such as our performance, or do anything to jeopardise our trade secrets, confidential information and intellectual property. You must not include our logos or other trademarks in any social media posting or in your profile on any social media.</p>
+    <p>You are not permitted to add business contacts made during your employment to personal social networking accounts.</p>
+    <p>Any misuse of social media should be reported to a Director.</p>
+    <h3>ii. Guidelines for responsible use of Social Media</h3>
+    <p>You should make it clear in social media postings, or in your personal profile, that you are speaking on your own behalf. Write in the first person and use a personal email address. This does not apply to business related sites such as LinkedIn although all other social media policy guidelines contained in this Schedule still apply.</p>
+    <p>Be respectful to others when making any statement on social media and be aware that you are personally responsible for all communications which will be published on the internet for anyone to see.</p>
+    <p>If you disclose your affiliation with us on your profile or in any social media postings, you must state that your views do not represent those of your employer (unless you have been authorised to speak on our behalf). You should also ensure that your profile and any content you post are consistent with the professional image you present to clients and colleagues.</p>
+    <p>If you are uncertain or concerned about the appropriateness of any statement or posting, refrain from posting it until you have discussed it with your manager.</p>
+    <p>If you see social media content that disparages or reflects poorly on us, you should contact your manager.</p>
+    <h3>iii. Breach of this Policy</h3>
+    <p>Breach of this policy will result in disciplinary action up to and including dismissal. Any member of staff suspected of committing a breach of this policy will be required to co-operate with our investigation, which may involve handing over relevant passwords and login details.</p>
+    <p>You may be required to remove any social media content that we consider to constitute a breach of this policy. Failure to comply with such a request will result in disciplinary action.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="foot">
+  Albany Insurance Brokers Limited &nbsp;&middot;&nbsp; Employee Handbook Version 02/2025 &nbsp;&middot;&nbsp; This document does not form part of your Contract of Employment
+</div>
+
+
+<script>
+function showHub() {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-hub').classList.add('active');
+  document.getElementById('hubSearch').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
+
+function showPolicy(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  document.getElementById('hubSearch').style.display = 'none';
+  window.scrollTo(0, 0);
+}
+
+const searchInput = document.getElementById('searchInput');
+const allRows = document.querySelectorAll('.policy-row');
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  allRows.forEach(row => {
+    const text = (row.textContent + ' ' + (row.dataset.search || '')).toLowerCase();
+    row.classList.toggle('hidden', q.length > 1 && !text.includes(q));
+  });
+});
+</script>
+
+</body>
+</html>
